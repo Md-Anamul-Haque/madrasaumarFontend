@@ -1,8 +1,10 @@
 import { Button } from '@mui/material'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Donate from '../components/donate'
+import BlinkDonateButton from '../components/BlinkDonateButton'
 import HomeCarousel from '../components/HomeCarousel'
+import HistoryOfWebSummery from '../components/homePageConponents/HistoryOfWebSummery'
+import Marquee from '../components/homePageConponents/Marquee'
 import LogoCard from '../components/LogoCard'
 import Stuffs from '../components/Stuffs'
 import FAQs from './FAQs'
@@ -11,10 +13,15 @@ const Home = () => {
   return (
     <div className='bg-gray-100'>
       <HomeCarousel />
+      <Marquee />
+      <HistoryOfWebSummery />
       <div className='flex justify-center pt-10'>
+{/* logo card   */}
         <LogoCard />
+        <NavLink to={'/donate#start'} preventScrollReset={true} >
+          <BlinkDonateButton />
+        </NavLink>
       </div>
-      <Donate />
 
       <div className="flex flex-wrap items-center container my-10">
         <Stuffs />

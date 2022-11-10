@@ -5,15 +5,18 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import './App.css';
 import Footer from './components/footer/Footer';
+import ScrollToTop from './components/lib/ScrollToTop';
 import Nav from './components/navigation/nav';
 import About from "./pages/about";
 import Books from './pages/Books';
 import Contact from "./pages/contact";
+import Donate from './pages/donate';
 import FAQs from "./pages/FAQs";
 import Home from "./pages/home";
 import Islamic_story from "./pages/Islamic_story";
 import NoPage from "./pages/NoPage";
 import Notices from './pages/Notices';
+import Runing_info from './pages/Runing_info';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function App() {
@@ -37,6 +40,8 @@ function App() {
   {/* <BrowserRouter> */}
           <Nav toggleDarkMode={toggleDarkMode}/>
           {/* <Navigate to="/admin" replace /> */}
+          <ScrollToTop />
+
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
@@ -46,6 +51,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/notice" element={<Notices />} />
+              <Route path='/donate' element={<Donate />} />
+              <Route path='/runing_info' element={<Runing_info />} />
               <Route path="*" element={<NoPage />} />
           </Routes>
           <Footer />

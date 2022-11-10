@@ -16,7 +16,7 @@ const Nav = () => {
     { url: '/notice', txt: 'Notice' },
     { url: '/book', txt: 'Books' },
     { url: '/about', txt: 'About' },
-    { url: '/sine-in', txt: 'Sine-in' },
+    { url: '/runing_info', txt: 'Runing_info' },
   ];
 
   const Li = (data) => {
@@ -30,7 +30,7 @@ const Nav = () => {
     </li>)
   }
   return (<>
-    <div className="h-16"></div>
+    <div className="h-16"></div> 
     <nav className="flex fixed top-0 left-0 w-full h-14 items-start bg-white shadow-lg lg:items-center z-10">
       <button onClick={handleNavItemWithThreeDotNenu} className="z-10 self-center absolute left-5 lg:hidden"> <FaBars /> </button>
       <ul ref={navItemsRef} className="hidden bg-white lg:bg-none p-10 lg:p-0 lg:px-5 space-y-5 lg:space-y-0 rounded-xl lg:flex flex-col lg:flex-row lg:space-x-8 font-medium ">
@@ -51,6 +51,3 @@ const Nav = () => {
 }
 
 export default Nav
-// <Button variant="text">Text</Button>
-  // <Button variant="contained">Contained</Button>
-  // <Button variant="outlined">Outlined</Button>

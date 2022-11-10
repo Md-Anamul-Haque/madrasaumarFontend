@@ -1,8 +1,8 @@
 {
-  "name": "fontend",
+  "name": "madrasaumar",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3302",
+  "proxy": "https://madrasaumar.com",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

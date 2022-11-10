@@ -2,8 +2,8 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import About from './admin-pages/Admin.about'
 import Adminbooks from './admin-pages/Admin.books'
-import AdminHome from './admin-pages/Admin.home'
 import AdminNotices from './admin-pages/Admin.notices'
+import Dashboard from './admin-pages/Dashboard'
 import AddEdiitCarousel from './AdminComponents/addEditCarousel'
 import Nav from './AdminComponents/navigation/nav'
 
@@ -12,7 +12,7 @@ const Admin = () => {
     <div>
       <Nav />
        <Routes>
-              <Route path="/" element={<AdminHome />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/notice" element={<AdminNotices />} />
               <Route path="/about" element={<About />} />
               <Route path="/book" element={<Adminbooks />} />

@@ -1,7 +1,7 @@
 import React from 'react'
 import AddEdiitCarousel from '../AdminComponents/addEditCarousel'
 
-const AdminHome = () => {
+const Dashboard = () => {
   return (
     <div>
       home of admin edition .....
@@ -10,4 +10,4 @@ const AdminHome = () => {
   )
 }
 
-export default AdminHome
+export default Dashboard
