@@ -15,7 +15,7 @@ const Home = () => {
       <HomeCarousel />
       <Marquee />
       <HistoryOfWebSummery />
-      <div className='flex justify-center pt-10'>
+      <div className='flex flex-col md:flex-row mb-20 justify-center pt-10'>
 {/* logo card   */}
         <LogoCard />
         <NavLink to={'/donate#start'} preventScrollReset={true} >
