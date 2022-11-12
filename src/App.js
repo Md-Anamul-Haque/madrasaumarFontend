@@ -1,7 +1,6 @@
 // import logo from './logo.svg';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import './App.css';
 import Footer from './components/footer/Footer';
@@ -24,21 +23,21 @@ function App() {
   //   AOS.init();
   // }, [])
   const [darkKey, setDarkKey] = useState(false);
-  useEffect(() => {
-    setDarkKey(localStorage.getItem('darkKey'));
-    AOS.init({
-      duration : 600
-    });
-  }, []);
-  const toggleDarkMode=()=>{
-    let tmpDarkValue=!darkKey;
-    localStorage.setItem('darkKey', tmpDarkValue);
-    setDarkKey(tmpDarkValue);
-  }
+  // useEffect(() => {
+  //   setDarkKey(localStorage.getItem('darkKey'));
+  //   AOS.init({
+  //     duration : 600
+  //   });
+  // }, []);
+  // const toggleDarkMode=()=>{
+  //   let tmpDarkValue=!darkKey;
+  //   localStorage.setItem('darkKey', tmpDarkValue);
+  //   setDarkKey(tmpDarkValue);
+  // }
   
-  return (<div className={darkKey ? 'dark' : ''}>
+  return (<div>
   {/* <BrowserRouter> */}
-          <Nav toggleDarkMode={toggleDarkMode}/>
+          <Nav />
           {/* <Navigate to="/admin" replace /> */}
           <ScrollToTop />
 

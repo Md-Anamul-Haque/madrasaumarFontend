@@ -5,13 +5,19 @@ const HomeCarousel = () => {
       <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 px-2 sm:px-5 lg:px-8 xl:px-12 2xl:px-14">
           <Carousel>
               <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-                  Slide 1
+                  <img src='/asset/files/logo.jpeg' alt='slidpic'/>
               </div>
               <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-                  Slide 2
+                <img src='/asset/files/logo.jpeg' alt='slidpic'/>
               </div>
               <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-                  Slide 3
+                <img src='/asset/files/logo.jpeg' alt='slidpic'/>
+              </div>
+              <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+                <img src='/asset/files/logo.jpeg' alt='slidpic'/>
+              </div>
+              <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+                <img src='/asset/files/logo.jpeg' alt='slidpic'/>
               </div>
           </Carousel>
       </div>

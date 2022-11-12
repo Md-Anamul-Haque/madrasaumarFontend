@@ -4,5 +4,5 @@
 
 
 .dropParent:hover .dropChild{
-    display: block;
+    display: flex;
 }
