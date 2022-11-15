@@ -15,7 +15,7 @@ import FAQs from './FAQs';
 
 const Home = () => {
   return (
-    <div className='bg-gray-100'>
+    <div className=''>
       <HomeCarousel />
       <Marquee />
       <AboutAndNotice_crash />
@@ -25,17 +25,16 @@ const Home = () => {
       <HistoryOfWebSummery />
       <আমাদের_সার্ভিস />
       <LocationAdderssAndMap />
-      <div className='flex flex-col md:flex-row mb-20 justify-center pt-10'>
+      <div className='grid mb-20 justify-center pt-10'>
 {/* logo card   */}
+        <div className="flex flex-wrap items-center container my-10">
         <LogoCard />
+        <Stuffs />
+        <NavLink className="w-full text-center h-10" to={'/about'} ><Button>more...</Button></NavLink>
+      </div>
         {/* <NavLink to={'/donate#start'} preventScrollReset={true} >
           <BlinkDonateButton />
         </NavLink> */}
-      </div>
-
-      <div className="flex flex-wrap items-center container my-10">
-        <Stuffs />
-        <NavLink className="w-full text-center h-10" to={'/about'} ><Button>more...</Button></NavLink>
       </div>
       <FAQs />
     </div>

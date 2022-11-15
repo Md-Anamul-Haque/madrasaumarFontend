@@ -2,11 +2,11 @@ import React from 'react'
 
 const FAQs = () => {
   return (
-      <section className="text-gray-700">
+      <section className="text-gray-700 dark:text-white dark:shadow-xl">
         <div className="container px-5 py-24 mx-auto">
 
-          <div data-aos="fade-up"  className="text-center mb-20">
-            <h1 className="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
+          <div className="text-center mb-20">
+            <h1 className="sm:text-3xl text-2xl font-medium text-center title-font dark:bg-slate-800 dark:text-white dark:shadow-xl mb-4">
               Frequently Asked Question
             </h1>
             <p className="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
@@ -15,10 +15,10 @@ const FAQs = () => {
             </p>
           </div>
 
-          <div data-aos="fade-up" className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
+          <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
             <div className="w-full lg:w-1/2 px-4 py-2">
               <details className="mb-4">
-                <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
+                <summary className="font-semibold dark:bg-slate-700 dark:text-white dark:shadow-xl rounded-md py-2 px-4">
                   How Long is this site live?
                 </summary>
 
@@ -29,7 +29,7 @@ const FAQs = () => {
                 </span>
               </details>
               <details className="mb-4">
-                <summary className="font-semibold bg-gray-200 rounded-md py-2 px-4">
+                <summary className="font-semibolddark:bg-slate-700 dark:text-white dark:shadow-xl rounded-md py-2 px-4">
                   Can I install/upload anything I want on there?
                 </summary>
 
@@ -40,7 +40,7 @@ const FAQs = () => {
                 </span>
               </details>
               <details className="mb-4">
-                <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
+                <summary className="font-semibold dark:bg-slate-700 dark:text-white dark:shadow-xl rounded-md py-2 px-4">
                   How can I migrate to another site?
                 </summary>
 
@@ -53,7 +53,7 @@ const FAQs = () => {
             </div>
             <div className="w-full lg:w-1/2 px-4 py-2">
               <details className="mb-4">
-                <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
+                <summary className="font-semibold dark:bg-slate-700 dark:text-white dark:shadow-xl rounded-md py-2 px-4">
                   Can I change the domain you give me?
                 </summary>
 
@@ -64,7 +64,7 @@ const FAQs = () => {
                 </span>
               </details>
               <details className="mb-4">
-                <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
+                <summary className="font-semibold dark:bg-slate-700 dark:text-white dark:shadow-xl rounded-md py-2 px-4">
                   How many sites I can create at once?
                 </summary>
 
@@ -75,7 +75,7 @@ const FAQs = () => {
                 </span>
               </details>
               <details className="mb-4">
-                <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
+                <summary className="font-semibold  dark:bg-slate-700 dark:text-white dark:shadow-xl rounded-md py-2 px-4">
                   How can I communicate with you?
                 </summary>
 

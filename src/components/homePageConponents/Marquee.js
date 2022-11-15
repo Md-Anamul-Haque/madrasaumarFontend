@@ -1,11 +1,26 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const Marquee = () => {
+  const [isError,setIsError]= useState(null)
+  const [dataOfMarquee, setDataOfMarquee] =useState({});
+  useEffect(()=>{
+    axios.get('/api/txts/marquee/')
+        .then((res)=>{
+            if (res.data.status) {
+                setIsError(null)
+                setDataOfMarquee(res.data.data[0])
+            } else {
+                setIsError(res.data.message)
+            }
+        })
+        .catch((err)=>{
+            setIsError(err.message)
+        })
+  },[])
   return (
-    <div>
-        <marquee className='text-2xl font-bold my-5'>
-        Cupidatat culpa cillum adipisicing duis sit. Eiusmod incididunt amet exercitation reprehenderit eiusmod ea duis fugiat est ullamco. Minim duis aliqua quis nostrud tempor. Labore laborum aliquip nostrud laboris reprehenderit occaecat occaecat ex. Pariatur voluptate enim do officia minim dolore est mollit consequat nostrud pariatur dolor. Commodo ea enim id enim esse consectetur est aute nulla.
-      </marquee>
+    <div className='text-2xl font-bold px-2 sm:px-4 md:px-10 lg:px-14 dark:bg-slate-800 dark:text-white shadow-2xl shadow-gray-700 dark:shadow-slate-300 my-10'>
+        {dataOfMarquee && <marquee className=''>{dataOfMarquee.marquee}</marquee>}
     </div>
   )
 }

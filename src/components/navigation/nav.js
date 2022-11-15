@@ -17,11 +17,12 @@ const Nav = () => {
   const datas = [
     { url: '/', txt: 'Home' },
     { url: '/contact', txt: 'Contact' },
+    {url: '/donate', txt: 'Donate'},
     { url: '/faqs', txt: 'FAQs' },
     { url: '/notice', txt: 'Notice' },
     { url: '/book', txt: 'Books' },
     { url: '/about', txt: 'About' },
-    { url: '/runing_info', txt: 'Runing_info' },
+    { url: '/runing_info', txt: '...info' },
   ];
 
   const Li = (data) => {
@@ -78,7 +79,7 @@ const TopPartsOfNavHear=()=>{
     <div className="h-36"></div> 
     <nav 
       className={` z-50 flex flex-col top-0 w-full
-       ${showTopOfNav ? 'translate-y-0' : '-translate-y-[70px]'} fixed duration-300 left-0  shadow-lg lg:items-center z-10`}
+       ${showTopOfNav ? 'translate-y-0' : '-translate-y-[74px]'} fixed duration-300 left-0  shadow-lg lg:items-center z-10`}
     >
 
       <TopPartsOfNavHear />
@@ -107,7 +108,7 @@ const TopPartsOfNavHear=()=>{
          ${showTopOfNav ? 'justify-center' :'justify-end'}
           bg-white dark:bg-gray-800 dark:text-white lg:bg-none 
           p-7 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 
-         rounded-md flex-col lg:flex-row lg:space-x-8 font-medium border-4 lg:border-none`}
+         rounded-md flex-col lg:flex-row lg:space-x-4 font-medium border-4 lg:border-none`}
           >
           {datas.map(data => {
             return (

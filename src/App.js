@@ -13,6 +13,7 @@ import Donate from './pages/donate';
 import FAQs from "./pages/FAQs";
 import Home from "./pages/home";
 import Islamic_story from "./pages/Islamic_story";
+import Login from './pages/Login';
 import NoPage from "./pages/NoPage";
 import Notices from './pages/Notices';
 import Runing_info from './pages/Runing_info';
@@ -35,7 +36,7 @@ function App() {
   //   setDarkKey(tmpDarkValue);
   // }
   
-  return (<div>
+  return (<div className='bg-gray-100 dark:bg-gray-700'>
   {/* <BrowserRouter> */}
           <Nav />
           {/* <Navigate to="/admin" replace /> */}
@@ -52,6 +53,7 @@ function App() {
               <Route path="/notice" element={<Notices />} />
               <Route path='/donate' element={<Donate />} />
               <Route path='/runing_info' element={<Runing_info />} />
+              <Route path='/login' element={<Login />} />
               <Route path="*" element={<NoPage />} />
           </Routes>
           <Footer />

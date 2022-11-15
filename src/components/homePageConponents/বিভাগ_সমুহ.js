@@ -1,14 +1,42 @@
+import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 
 const বিভাগ_সমুহ = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [isError, setIsError] = React.useState(null);
+  const [datas, setDatas] = React.useState([]);
+
     const [isSlideRun, setIsSlideRun] = useState(true);
     const AllContainsRef = useRef(null)
+    useEffect(()=>{
+      axios.get('/api/cards/বিভাগ')
+      .then((res)=>{
+        console.log(res)
+        if(res.data.status){
+          setIsError(null)
+          setDatas(res.data.data)
+        setIsLoading(false)
+        }else{
+          setIsError(res.data.message)
+          setDatas([])
+        setIsLoading(false)
+        }
+      })
+      .catch((err)=>{
+        setIsError(err.message)
+        setIsLoading(false)
+        setDatas([])
+      })
+    },[]);
+
     useEffect(()=>{
 
         const flavoursScrollWidth = AllContainsRef.current.scrollWidth;
         let tmpLeftValue;
         let leftAutoScrollInterval = setInterval(() => {
-              if (AllContainsRef.current.scrollLeft !== AllContainsRef.current.scrollWidth) {
+             try {
+                if (AllContainsRef.current.scrollLeft !== AllContainsRef.current.scrollWidth) {
                   AllContainsRef.current.scrollTo(AllContainsRef.current.scrollLeft + 1, 0);
                   if(tmpLeftValue !== AllContainsRef.current.scrollLeft){
                       tmpLeftValue = AllContainsRef.current.scrollLeft;
@@ -18,55 +46,32 @@ const বিভাগ_সমুহ = () => {
               }else{
                   alert(AllContainsRef.current.scrollRight)
               }
+             } catch (error) {
+              
+             }
         }, 15);
          AllContainsRef.current.addEventListener('mouseover', () => {clearInterval(leftAutoScrollInterval)})
         //  AllContainsRef.current.addEventListener('mouseout', () => {})
           
         // });
     })
+
+
   return (
-    <div className='grid place-items-center w-full bg-slate-500'>
-        <h2 className='text-4xl text-center text-white font-bold my-9'>বিভাগ সমুহ</h2>
-      
-      <div onMouseOver={()=>setIsSlideRun(false)} onMouseOut={()=>setIsSlideRun(true)} ref={AllContainsRef} className=' flex w-full md:w-10/12 lg:w-8/12 overflow-x-auto '>
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-        <img className='w-56 grow' src='/asset/files/logo.jpeg' alt='orjon' />
-      </div>
+    <div className='grid py-10 place-items-center w-full dark:text-white dark:shadow-xl'>
+        <h2 className='text-4xl text-center font-bold my-9'>বিভাগ সমুহ</h2>
+       {isLoading && <h2 className='text-4xl text-center font-bold'>Loading...</h2>}
+            {isError && <h2 className='text-4xl text-center font-bold'>{isError}</h2>}
+      {datas && <div 
+            onMouseOver={()=>setIsSlideRun(false)}
+           onMouseOut={()=>setIsSlideRun(true)} 
+           ref={AllContainsRef} 
+           className='mx-5 flex w-full md:w-11/12 lg:w-9/12 h-72 overflow-x-auto space-x-9 md:rounded-3xl'
+           >
+            {datas.map((data)=>{
+                                return(<img key={uuid()} src={`/asset/files/${data.image}`} alt='vibags' />)
+                              })}
+        </div>}
     </div>
   )
 }

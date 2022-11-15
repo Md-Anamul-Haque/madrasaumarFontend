@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { GiPencil } from "react-icons/gi";
 
 const ImageInputResizeAndBack = (props) => {
-    const required = props.required;
-    const {cb}= props
+    const required = props.required || false;
+    const {cb}= props;
     const classes= props.classes;
     const notsetImage = props.notsetImage || '';
     const type = props.type || 'file';
@@ -61,6 +61,7 @@ const uploadImage= async (e)=>{
           name='image'
           onChange={uploadImage}
           className='hidden'
+          required={required}
         />
         {(baseImage || notsetImage) && <img src={baseImage ? baseImage : notsetImage} className={classes} alt={"previewImage"} />}
 

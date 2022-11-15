@@ -3,9 +3,9 @@ import { readAndCompressImage } from 'browser-image-resizer';
 import { Button } from 'flowbite-react';
 import React, { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
-import SingleCarousel from './singleCarousel';
+import HandleSingleVibag from './handleSingleVibag';
 
-const AddEditCarousel = () => {
+const বিভাগ_সমুহ_নিয়ন্তন = () => {
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
   const [isError, setIsError] = React.useState(null);
@@ -14,7 +14,7 @@ const AddEditCarousel = () => {
 
 
   useEffect(()=>{
-    axios.get('/api/cards/carousel')
+    axios.get('/api/cards/বিভাগ')
     .then((res)=>{
       console.log(res)
       if(res.data.status){
@@ -35,7 +35,7 @@ const AddEditCarousel = () => {
   },[]);
 
 
-  const handleSubmitCarousel = async(e) =>{
+  const handleSubmitVibag = async(e) =>{
     e.preventDefault();
     // const _img = {image:selectedFile};
     const formData = new FormData();
@@ -43,7 +43,7 @@ const AddEditCarousel = () => {
 
     const response = await axios({
       method: "post",
-      url:'/api/admin/card/carousel',
+      url:'/api/admin/card/বিভাগ',
       data: formData,
       headers: { "Content-Type": "multipart/form-data" },
     });
@@ -54,7 +54,7 @@ const AddEditCarousel = () => {
   }
 }
   
-  const handleCarouselImage = async(e)=>{
+  const handleVibagImage = async(e)=>{
     const config = {
       quality: 0.8,
       width: 500,
@@ -75,13 +75,13 @@ const AddEditCarousel = () => {
             <div className='flex flex-wrap justify-center'>
               {datas && <div className='flex overflow-auto'>
                             {datas.map((data)=>{
-                                return(<SingleCarousel key={uuid()} {...{slidId:data.card_id,img:data.image}} />)
+                                return(<HandleSingleVibag key={uuid()} {...{slidId:data.card_id,img:data.image}} />)
                               })}
                         </div>}
             </div>
-            <form onSubmit={handleSubmitCarousel} className='bg-white p-5 grid place-items-center my-6'>
+            <form onSubmit={handleSubmitVibag} className='bg-white p-5 grid place-items-center my-6'>
                 <div className='flex'>
-                  <input type={'file'} onChange={handleCarouselImage} id="file" required/>
+                  <input type={'file'} onChange={handleVibagImage} id="file" required/>
                   <Button type='submit' color="gray">
                     + new slider image
                   </Button>
@@ -91,4 +91,4 @@ const AddEditCarousel = () => {
   )
 }
 
-export default AddEditCarousel
+export default বিভাগ_সমুহ_নিয়ন্তন

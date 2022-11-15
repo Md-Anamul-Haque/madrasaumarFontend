@@ -22,7 +22,7 @@ const StuffCardLoadingEffect=()=>{
     </div>)
 }
 const StuffCard=({data})=>{
-    return( <div className='w-full md:w-5/12 grow shadow-2xl flex flex-col m-4 mb-0 mt-8 px-5'>
+    return( <div className='w-full md:w-5/12 grow shadow-2xl dark:shadow-slate-400 flex flex-col m-4 mb-0 mt-8 px-5'>
     <div className="text-blueGray-500 text-center inline-flex items-center 
         justify-center w-14 h-14 my-3 shadow-lg rounded-full bg-red-500">
         <img className='w-full h-full rounded-full' src={'/asset/files/'+data.image} alt={`${data.name}`} />
@@ -65,7 +65,7 @@ const Stuffs=()=>{
         })
     },[])
     return(
-        <div className="w-full md:w-6/12 mb-20">
+        <div className="w-full md:w-6/12 mb-20 dark:bg-slate-700 dark:text-white dark:shadow-xl">
             <h1 className='text-4xl text-center font-bold'>Stuff list</h1>
             <section className='w-full'>
             <div className='w-full overflow-auto max-h-[40rem] flex flex-wrap'>
