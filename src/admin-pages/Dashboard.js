@@ -1,4 +1,6 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AddEdiitCarousel from '../AdminComponents/addEditCarousel';
 import Amader_lokkho_uddesho_controler from '../AdminComponents/DashboardControllFiles/Amader_lokkho_uddesho_controler';
 import Marquee_controler from '../AdminComponents/DashboardControllFiles/Marquee_controler';
@@ -6,6 +8,24 @@ import বিভাগ_সমুহ_নিয়ন্তন from '../AdminComponen
 import HomeCarousel from '../components/HomeCarousel';
 import বিভাগ_সমুহ from '../components/homePageConponents/বিভাগ_সমুহ';
 const Dashboard = () => {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    const checkLogin=()=>{
+      axios.get('/api/login')
+    .then((res)=>{
+      if (!res.data.isLogin) {
+        navigate('/login')
+      }
+    })
+    .catch(err=>{
+      setTimeout(() => {
+        checkLogin();
+      }, 1.500);
+    })
+    };
+    checkLogin()
+  },[]);
+
   return (
     <div>
       <HomeCarousel />
@@ -13,9 +33,9 @@ const Dashboard = () => {
       <Marquee_controler />
 
 
-      <Amader_lokkho_uddesho_controler />
       <বিভাগ_সমুহ />
       <বিভাগ_সমুহ_নিয়ন্তন />
+      <Amader_lokkho_uddesho_controler />
     </div>
   )
 }

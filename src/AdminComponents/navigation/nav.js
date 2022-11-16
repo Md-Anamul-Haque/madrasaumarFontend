@@ -15,7 +15,7 @@ const Nav = () => {
     e.target.classList.toggle("bg-blue-300");
   }
   const datas = [
-    { url: '/admin', txt: 'Home' },
+    { url: '/admin', txt: 'Dashboard' },
     { url: '/admin/contact', txt: 'Contact' },
     {url: '/admin/donate', txt: 'Donate'},
     { url: '/admin/faqs', txt: 'FAQs' },

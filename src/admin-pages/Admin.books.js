@@ -1,6 +1,26 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Adminbooks = () => {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    const checkLogin=()=>{
+      axios.get('/api/login')
+    .then((res)=>{
+      if (!res.data.isLogin) {
+        navigate('/login')
+      }
+    })
+    .catch(err=>{
+      setTimeout(() => {
+        checkLogin();
+      }, 1.500);
+    })
+    };
+    checkLogin()
+  },[]);
+
     const [Books,setBooks]=useState({});
   return (<section>
     <header className="bg-white space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6">

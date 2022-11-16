@@ -1,7 +1,26 @@
-import React from 'react'
-import { NavLink } from "react-router-dom"
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { NavLink, useNavigate } from "react-router-dom";
 
 const NoPage = () => {
+  const navigate = useNavigate();
+  useEffect(()=>{
+    const checkLogin=()=>{
+      axios.get('/api/login')
+    .then((res)=>{
+      if (!res.data.isLogin) {
+        navigate('/login')
+      }
+    })
+    .catch(err=>{
+      setTimeout(() => {
+        checkLogin();
+      }, 1.500);
+    })
+    };
+    checkLogin()
+  },[]);
+
   return (
 <main className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">
 	<h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>
