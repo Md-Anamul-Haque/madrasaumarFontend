@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
+import Aos from 'aos';
 import 'aos/dist/aos.css';
-import { useState } from "react";
+import { useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
 import './App.css';
 import Footer from './components/footer/Footer';
@@ -20,15 +21,15 @@ import Runing_info from './pages/Runing_info';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function App() {
-  // useEffect(() => {
-  //   AOS.init();
-  // }, [])
-  const [darkKey, setDarkKey] = useState(false);
+  useEffect(() => {
+    Aos.init();
+  }, [])
+  // const [darkKey, setDarkKey] = useState(false);
   // useEffect(() => {
   //   setDarkKey(localStorage.getItem('darkKey'));
-  //   AOS.init({
-  //     duration : 600
-  //   });
+  //   // AOS.init({
+  //   //   duration : 600
+  //   // });
   // }, []);
   // const toggleDarkMode=()=>{
   //   let tmpDarkValue=!darkKey;
@@ -36,7 +37,7 @@ function App() {
   //   setDarkKey(tmpDarkValue);
   // }
   
-  return (<div className='bg-gray-100 dark:bg-gray-700'>
+  return (<div className='antialiased text-slate-500 dark:text-slate-400 bg-gray-100 dark:bg-slate-900'>
   {/* <BrowserRouter> */}
           <Nav />
           {/* <Navigate to="/admin" replace /> */}

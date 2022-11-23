@@ -5,7 +5,7 @@ import { GiPencil } from "react-icons/gi";
 const ImageInputResizeAndBack = (props) => {
     const required = props.required || false;
     const {cb}= props;
-    const classes= props.classes;
+    const classes= props.classes || props.className;
     const notsetImage = props.notsetImage || '';
     const type = props.type || 'file';
     const [baseImage, setBaseImage] = useState("");

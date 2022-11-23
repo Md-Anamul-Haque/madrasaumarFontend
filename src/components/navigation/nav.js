@@ -113,7 +113,7 @@ const TopPartsOfNavHear=()=>{
           {datas.map(data => {
             return (
               <Li key={uuidv4()} {...{
-                classNames: "text-gray-900 dark:text-white duration-100 hover:text-lg hover:text-white hover:bg-pink-500 rounded-xl p-2",
+                classNames: "text-gray-900 dark:text-white duration-100 hover:text-white hover:bg-pink-500 rounded-xl p-2",
                 txt: data.txt,
                 url: data.url
               }} />

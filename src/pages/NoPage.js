@@ -1,7 +1,10 @@
-import React from 'react'
-import { NavLink } from "react-router-dom"
+import React, { useEffect } from 'react';
+import { NavLink } from "react-router-dom";
 
 const NoPage = () => {
+  useEffect(()=>{
+    document.title="not-found-page";
+  },[]);
   return (
 <main className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">
 	<h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>

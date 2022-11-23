@@ -41,7 +41,7 @@ const বিভাগ_সমুহ = () => {
                   if(tmpLeftValue !== AllContainsRef.current.scrollLeft){
                       tmpLeftValue = AllContainsRef.current.scrollLeft;
                   }else{
-                      AllContainsRef.current.scrollLeft=1;
+                        AllContainsRef.current.scrollLeft=1;
                   }
               }else{
                   alert(AllContainsRef.current.scrollRight)
@@ -49,7 +49,7 @@ const বিভাগ_সমুহ = () => {
              } catch (error) {
               
              }
-        }, 15);
+        }, 25);
          AllContainsRef.current.addEventListener('mouseover', () => {clearInterval(leftAutoScrollInterval)})
         //  AllContainsRef.current.addEventListener('mouseout', () => {})
           
@@ -58,18 +58,18 @@ const বিভাগ_সমুহ = () => {
 
 
   return (
-    <div className='grid py-10 place-items-center w-full dark:text-white dark:shadow-xl'>
-        <h2 className='text-4xl text-center font-bold my-9'>বিভাগ সমুহ</h2>
+    <div className='grid py-10 place-items-center w-full text-purple-400 dark:shadow-xl'>
+        <h2 style={{textShadow:'1px 2px 2px blue'}} className='text-4xl text-center font-bold my-9 p-2'>বিভাগ সমুহ</h2>
        {isLoading && <h2 className='text-4xl text-center font-bold'>Loading...</h2>}
             {isError && <h2 className='text-4xl text-center font-bold'>{isError}</h2>}
       {datas && <div 
             onMouseOver={()=>setIsSlideRun(false)}
            onMouseOut={()=>setIsSlideRun(true)} 
            ref={AllContainsRef} 
-           className='mx-5 flex w-full md:w-11/12 lg:w-9/12 h-72 overflow-x-auto space-x-9 md:rounded-3xl'
+           className='mx-5 px-10 flex w-full md:w-11/12 lg:w-10/12 h-72 shadow-2xl shadow-blue-500 overflow-x-auto space-x-9 md:rounded-3xl'
            >
             {datas.map((data)=>{
-                                return(<img key={uuid()} src={`/asset/files/${data.image}`} alt='vibags' />)
+                                return(<img style={{boxShadow:'0px 2px 8px 3px #000'}} key={uuid()} className='my-5 rounded-lg' src={`/asset/files/${data.image}`} alt='vibags' />)
                               })}
         </div>}
     </div>

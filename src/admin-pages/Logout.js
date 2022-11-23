@@ -9,6 +9,7 @@ const Logout = () => {
         .then(res=>{
           console.log(res)
             if (res.data.status) {
+              localStorage.setItem('isLogin', 'N');
                 navigate('/');
             } else {
                 window.location.reload();

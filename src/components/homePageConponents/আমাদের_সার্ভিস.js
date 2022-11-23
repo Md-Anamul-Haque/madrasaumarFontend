@@ -2,7 +2,7 @@ import React from 'react'
 
 const আমাদের_সার্ভিস = () => {
   return (
-    <div className='dark:bg-slate-800 dark:text-white dark:shadow-xl p-5 my-10 border-t-2'>
+    <div className='dark:bg-slate-800 text-black dark:text-white dark:shadow-xl p-5 my-10 border-t-2'>
       <h2 className='text-2xl text-center underline'>আমাদের_সার্ভিস </h2>
       <br />
       <br />

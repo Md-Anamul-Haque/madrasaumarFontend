@@ -10,6 +10,7 @@ import বিভাগ_সমুহ from '../components/homePageConponents/ব�
 const Dashboard = () => {
   const navigate = useNavigate();
   useEffect(()=>{
+    document.title="Dashboard";
     const checkLogin=()=>{
       axios.get('/api/login')
     .then((res)=>{
@@ -20,7 +21,7 @@ const Dashboard = () => {
     .catch(err=>{
       setTimeout(() => {
         checkLogin();
-      }, 1.500);
+      }, 1500);
     })
     };
     checkLogin()
@@ -35,7 +36,10 @@ const Dashboard = () => {
 
       <বিভাগ_সমুহ />
       <বিভাগ_সমুহ_নিয়ন্তন />
+
       <Amader_lokkho_uddesho_controler />
+
+      {/* <Admin_AmaderOrjon /> */}
     </div>
   )
 }

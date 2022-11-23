@@ -2,15 +2,15 @@ import axios from "axios"
 import { Button } from "flowbite-react"
 import { useState } from "react"
 import ImageInputResizeAndBack from "../ImageInputResizeAndBack"
-const HandleSingleVibag = ({slidId,img})=> {
+const HandleSingleBivag = ({slidId,img})=> {
     const [isEditable,setIsEditable]=useState(false)
     const [selectedPic,setselectedPic]=useState(false)
-    const [warningVibagImage,setwarningVibagImage]=useState(null)
+    const [warningBivagImage,setwarningBivagImage]=useState(null)
     
-    const handleVibagVhangeSubmitImage = async()=>{
+    const handleBivagVhangeSubmitImage = async()=>{
       if (selectedPic) {
         try {
-          setwarningVibagImage(null)
+          setwarningBivagImage(null)
           let formData = new FormData();
           formData.append("image", selectedPic);
                const res= await axios({
@@ -31,13 +31,13 @@ const HandleSingleVibag = ({slidId,img})=> {
           
         }
       }else{
-        setwarningVibagImage('select your new slid pic')
+        setwarningBivagImage('select your new slid pic')
       }
     }
     const handleDeleteImage = async()=>{
         if(window.confirm('are you confirm delete this slid image')){
                 try {
-                  setwarningVibagImage(null)
+                  setwarningBivagImage(null)
                   let formData = new FormData();
                   formData.append("image", selectedPic);
                        const res= await axios({
@@ -60,12 +60,12 @@ const HandleSingleVibag = ({slidId,img})=> {
       }
     const handleChangeImage=(pic)=>{
       setselectedPic(pic)
-      setwarningVibagImage(null)
+      setwarningBivagImage(null)
     }
     return(<div className='shadow-xl p-4 border-4 rounded-lg'>
         <span className={!isEditable? 'hidden' : 'block'}>
           <ImageInputResizeAndBack notsetImage={`/asset/files/${img}`} classes=' opacity-70 w-[220px] h-[80px] break-words mb-6 shadow-lg rounded-lg' required={true} cb={handleChangeImage}/>
-          {warningVibagImage && <p className='mb-5 text-red-600'>{warningVibagImage}</p>}
+          {warningBivagImage && <p className='mb-5 text-red-600'>{warningBivagImage}</p>}
         </span>
         <img src={`/asset/files/${img}`} className={`w-[100px] h-[100px] break-words mb-6 shadow-lg rounded-lg ${isEditable? 'hidden' : 'block'}`}  />
         <section className='flex justify-end space-x-10'>
@@ -73,9 +73,10 @@ const HandleSingleVibag = ({slidId,img})=> {
           {!isEditable && <Button color={'red'} className='bg-red-500' onClick={handleDeleteImage}>
             delete
             </Button>}
-          {isEditable && <Button type='submit' color={'success'} onClick={handleVibagVhangeSubmitImage}>save</Button>}
+          {isEditable && <Button type='submit' color={'success'} onClick={handleBivagVhangeSubmitImage}>save</Button>}
         </section>
   </div>)
   }
 
-  export default HandleSingleVibag;
+  export default HandleSingleBivag;
+  

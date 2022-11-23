@@ -15,7 +15,7 @@ const NoPage = () => {
     .catch(err=>{
       setTimeout(() => {
         checkLogin();
-      }, 1.500);
+      }, 1500);
     })
     };
     checkLogin()

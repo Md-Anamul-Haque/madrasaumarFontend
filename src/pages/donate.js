@@ -1,5 +1,5 @@
 import { Button } from 'flowbite-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FcDonate } from "react-icons/fc";
 import PaymentForm from '../components/PaymentForm';
 const PaymentWhy=()=>{
@@ -11,6 +11,9 @@ const PaymentWhy=()=>{
 
 
 const Donate = () => {
+	useEffect(()=>{
+		document.title="donate";
+	},[])
 	const [isActiveDonateI,setIsActiveDonateI]=useState(false);
   return (
 	<div className=' relative min-w-[460px]'>

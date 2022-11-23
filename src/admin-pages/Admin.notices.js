@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { FaFileDownload } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 import AddNoticeWindow from '../AdminComponents/addNoticeWindow';
@@ -13,6 +14,26 @@ const AdminNotices = () => {
     const [isError,setIsError]=useState(null);
     const [isEditorShow,setIsEditorShow]=useState(false);
     const [isEditorId,setIsEditorId]=useState(false);
+    const navigate = useNavigate();
+    useEffect(()=>{
+        const checkLogin=()=>{
+          axios.get('/api/login')
+        .then((res)=>{
+          if (!res.data.isLogin) {
+            navigate('/login')
+          }
+        })
+        .catch(err=>{
+          setTimeout(() => {
+            checkLogin();
+          }, 1500);
+        })
+        };
+        checkLogin()
+      },[]);
+    
+
+    
     const handleNoticeEditor = (id) =>{
         setIsEditorShow(true);
         setIsEditorId(id)

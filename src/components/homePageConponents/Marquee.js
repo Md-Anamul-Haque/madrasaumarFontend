@@ -19,7 +19,7 @@ const Marquee = () => {
         })
   },[])
   return (
-    <div className='text-2xl font-bold px-2 sm:px-4 md:px-10 lg:px-14 dark:bg-slate-800 dark:text-white shadow-2xl shadow-gray-700 dark:shadow-slate-300 my-10'>
+    <div style={{textShadow:'1px 2px 2px pink'}}  className='text-2xl font-bold px-2 sm:px-4 md:px-10 lg:px-14 bg-white rounded-xl dark:bg-slate-800 text-green-700 dark:text-white shadow-xl shadow-green-400 dark:shadow-slate-300 my-10 lg:mx-3'>
         {dataOfMarquee && <marquee className=''>{dataOfMarquee.marquee}</marquee>}
     </div>
   )

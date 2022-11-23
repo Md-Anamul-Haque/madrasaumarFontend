@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LogoCard from '../components/LogoCard';
 import Stuffs from '../components/Stuffs';
 
-const About = () => {   
+const About = () => {  
+  useEffect(()=>{
+    document.title="about";
+  },[]) 
   return (    
     <section className="pt-16">
     <div className="container mx-auto">

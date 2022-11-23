@@ -3,7 +3,7 @@ import { readAndCompressImage } from 'browser-image-resizer';
 import { Button } from 'flowbite-react';
 import React, { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
-import HandleSingleVibag from './handleSingleVibag';
+import HandleSingleBivag from './handleSingleBivag';
 
 const বিভাগ_সমুহ_নিয়ন্তন = () => {
   const [selectedFile, setSelectedFile] = React.useState(null);
@@ -75,7 +75,7 @@ const বিভাগ_সমুহ_নিয়ন্তন = () => {
             <div className='flex flex-wrap justify-center'>
               {datas && <div className='flex overflow-auto'>
                             {datas.map((data)=>{
-                                return(<HandleSingleVibag key={uuid()} {...{slidId:data.card_id,img:data.image}} />)
+                                return(<HandleSingleBivag key={uuid()} {...{slidId:data.card_id,img:data.image}} />)
                               })}
                         </div>}
             </div>

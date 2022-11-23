@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
 const FAQs = () => {
+  useEffect(()=>{
+    // document.title="faq";
+  },[])
   return (
       <section className="text-gray-700 dark:text-white dark:shadow-xl">
         <div className="container px-5 py-24 mx-auto">

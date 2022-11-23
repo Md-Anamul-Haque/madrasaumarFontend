@@ -20,7 +20,9 @@ const Notices = () => {
                 </div>)
     }
     useEffect(()=>{
-        axios.get('/api/admin/notices')
+        document.title="notices";
+        
+        axios.get('/api/notices')
         .then((res)=>{
             console.log(res.data)
             setIsLoading(false)
