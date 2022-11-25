@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import HomeCarousel from '../components/HomeCarousel';
 import AboutAndNotice_crash from '../components/homePageConponents/AboutAndNotice_crash';
@@ -14,6 +14,9 @@ import LogoCard from '../components/LogoCard';
 import FAQs from './FAQs';
 
 const Home = () => {
+  useEffect(()=>{
+    document.title="Madrasaumar";
+  },[])
   return (
     <div className=''>
       <HomeCarousel />

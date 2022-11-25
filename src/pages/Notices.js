@@ -46,7 +46,7 @@ const Notices = () => {
     return (
         <div>
             <div className="mx-auto container py-20 flex flex-col w-full items-center ">
-                <h1 className='text-4xl text-center font-light'>Notice page</h1>
+                <h1 className='text-4xl text-center font-normal text-pink-600'>Notice page</h1>
                     {isLoading && <h3 className='text-2xl'>loading...</h3>}
                     {!notices && <h3 className='text-2xl'>{isError}</h3>}
                     {notices && notices.map((ntc)=>{

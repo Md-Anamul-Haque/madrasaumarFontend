@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer';
 import ScrollToTop from './components/lib/ScrollToTop';
 import Nav from './components/navigation/nav';
 import About from "./pages/about";
+import AllOrjons from './pages/AllOrjons';
 import Books from './pages/Books';
 import Contact from "./pages/contact";
 import Donate from './pages/donate';
@@ -51,8 +52,10 @@ function App() {
               <Route path="/book" element={<Books />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              {/* <Route path='/contact/whatsApp' element={ } /> */}
               <Route path="/notice" element={<Notices />} />
               <Route path='/donate' element={<Donate />} />
+              <Route path='/orjon' element={<AllOrjons />} />
               <Route path='/runing_info' element={<Runing_info />} />
               <Route path='/login' element={<Login />} />
               <Route path="*" element={<NoPage />} />

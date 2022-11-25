@@ -7,11 +7,11 @@ const TopOfNav = ({...refars}) => {
   return (
     <div {...refars} >
       
-      <span className=' grow hidden sm:inline'>
+      <span className='hidden sm:inline'>
         <Clock className="font-bold text-lg" />
       </span>
 
-      <h2 className=' text-lg font-semibold text-center grow'>bismillahgirrohmanir rohim...</h2>
+      <h2 className=' text-lg font-serif font-thin text-center grow'>بسم هللا الرحمن الر حيم</h2>
       <Link className={'max-w-[70px]'} to={'/login'}>
         <Button className=' justify-self-end '>login</Button>
       </Link>

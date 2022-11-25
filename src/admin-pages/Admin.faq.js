@@ -36,6 +36,21 @@ const Admin_faqs = () => {
         setIsActiveUpdate(true)
     }
 
+    const handleDeleteFaq =(txt_id) =>{
+        if (window.confirm("if you want to delete this faq click 'ok' or 'cancle'")) {
+          axios.delete(`/api/admin/txt/faq/${txt_id}`)
+          .then((res)=>{
+            if (res.data.status) {
+                setFaqs(faqs.map(faq=>faq.txt_id !== txt_id && faq))
+            } else {
+                alert(res.data.message)
+            }
+          })
+          .catch(err=>{
+            alert(err.message)
+          })
+        }
+      }
   return (
     <div>
         {/* stape1:create faq form */}
@@ -55,7 +70,9 @@ const Admin_faqs = () => {
         {faqs && faqs.map((faq)=>{
             return(
                 <section className="w-[330px] sm:w-11/12 md:w-[500px] rounded-md shadow-md border-2 bg-white dark:bg-gray-800 ">
-                     <ViewAdminModeFaq {...{question:faq.question, answer:faq.answer, handleCallUpdateWindow, faq_id:faq.txt_id}} />
+                     <ViewAdminModeFaq 
+                        {...{question:faq.question, answer:faq.answer, handleCallUpdateWindow,handleDeleteFaq, faq_id:faq.txt_id}}
+                     />
                 </section>
             )
         })}

@@ -1,16 +1,14 @@
-import { Button } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { AiOutlineMinusSquare } from 'react-icons/ai';
-import { NavLink } from 'react-router-dom';
 
-const AmaderOrjons = () => {
+const AllOrjons = () => {
     const [isloading,setIsloading]=useState(true);
     const [isError,setIsError]=useState(true);
     
-    const ViewOrjon =({name,article,image})=>{
+    const Orjon =({name,article,image})=>{
         const [isActiveArticle, setIsActiveArticle] = useState(false);
-        return(<div className="mx-auto my-10 sm:w-[320px] flex flex-col justify-center shadow-2xl rounded-lg hover:shadow-pink-400 hover:shadow-sm">
+        return(<div className="mx-auto md:mx-6 my-10 sm:w-[320px] flex flex-col justify-center shadow-2xl rounded-lg hover:shadow-pink-400 hover:shadow-sm">
         <div className='relative bg-white rounded-2xl text-black dark:bg-gray-500'>
             <img className=' drop-shadow-2xl w-full rounded-xl border-4 border-lime-400 max-h-[200px] mb-5' 
                 src={`/asset/files/${image}`} alt="" />
@@ -36,6 +34,7 @@ const AmaderOrjons = () => {
         </div> */}
     </div>)
     }
+
     const [datas,setDatas]= useState({})
     const [getFinishWorld,setGetFinishWorld]=useState(false)
     const [getFinishCountry,setGetFinishCountry]=useState(false)
@@ -49,12 +48,13 @@ const AmaderOrjons = () => {
       (getFinishWorld && getFinishCountry && getFinishMadrasa && setIsloading(false))
     },[getFinishWorld+getFinishCountry+getFinishMadrasa])
    
-    useEffect(()=>{
-      axios.get('/api/cards/orjon_in_world?sort=-1&limit=1')
+    
+   useEffect(()=>{
+      axios.get('/api/cards/orjon_in_world?sort=-1')
       .then(res=>{
         if (res.data.status && res.data.data.length) {
           console.log(res.data.data)
-          handleSetGetData('orjon_in_world', res.data.data[0])
+          handleSetGetData('orjon_in_world', res.data.data)
           setGetFinishWorld(true)
         } else {
           console.log('not found gain in the world orjons')
@@ -67,11 +67,11 @@ const AmaderOrjons = () => {
       })
   },[])
   useEffect(()=>{
-    axios.get('/api/cards/orjon_in_country?sort=-1&limit=1')
+    axios.get('/api/cards/orjon_in_country?sort=-1')
     .then(res=>{
         if (res.data.status && res.data.data.length) {
           console.log(res)
-          handleSetGetData('orjon_in_country', res.data.data[0])
+          handleSetGetData('orjon_in_country', res.data.data)
           setGetFinishCountry(true)
         } else {
           console.log('data is not found in country orjon')
@@ -84,10 +84,10 @@ const AmaderOrjons = () => {
     })
   },[])
   useEffect(()=>{
-    axios.get('/api/cards/orjon_in_madrasa?sort=-1&limit=1')
+    axios.get('/api/cards/orjon_in_madrasa?sort=-1')
     .then(res=>{
         if (res.data.status && res.data.data.length) {
-          handleSetGetData('orjon_in_madrasa', res.data.data[0])
+          handleSetGetData('orjon_in_madrasa', res.data.data)
           setGetFinishMadrasa(true)
         } else {
           console.log('data is not found in madrasa orjon')
@@ -99,6 +99,10 @@ const AmaderOrjons = () => {
 
     })
   },[])
+
+  useEffect(()=>{
+    document.title="আমাদের অর্জন";
+  },[])
   return (
     <div className='bg-purple-200'>
         <div className='text-center pt-1'>
@@ -107,16 +111,29 @@ const AmaderOrjons = () => {
         </div>
     {isloading && <h2 className='text-2xl text-center m-5'>Loading...</h2>}
     {isError && <h2 className='text-2xl text-center m-5'>{isError}</h2>}
+    
+   
+    <h2 className='text-center text-2xl font-semibold w-full block'>orjons in world</h2>
+    
     <div className='flex flex-wrap w-full justify-center'>
-      {datas && datas.orjon_in_world && <ViewOrjon {...datas.orjon_in_world} />}
-      {datas && datas.orjon_in_country && <ViewOrjon {...datas.orjon_in_country} />}
-      {datas && datas.orjon_in_madrasa && <ViewOrjon {...datas.orjon_in_madrasa} />}
+      {datas && datas.orjon_in_world && datas.orjon_in_world.map(ow=> <Orjon {...ow} />)}
     </div>
     
-     <Button className='text-center w-full'><NavLink to={'/orjon'}>...More </NavLink></Button>
-   
+    
+    <h2 className='text-center text-2xl font-semibold w-full block'>orjons in country</h2>
+    
+    <div className='flex flex-wrap w-full justify-center'>
+      {datas && datas.orjon_in_country && datas.orjon_in_country.map(oc=><Orjon {...oc} />) }
+    </div>
+    
+    
+    <h2 className='text-center text-2xl font-semibold w-full block'>orjons in madrasa</h2>
+    
+    <div className='flex flex-wrap w-full justify-center'>
+      {datas && datas.orjon_in_madrasa && datas.orjon_in_madrasa.map(om=><Orjon {...om} />) }
+    </div>
 </div>
   )
 }
 
-export default AmaderOrjons
+export default AllOrjons

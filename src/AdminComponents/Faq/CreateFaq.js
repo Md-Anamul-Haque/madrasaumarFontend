@@ -30,11 +30,11 @@ const CreateFaq = ({faqs,setFaqs, setIsActiveCreater}) => {
        axios.post('/api/admin/txt/faq',values)
         .then((res)=>{
             if (res.data.status) {
-                resetForm({values:''})
                 let tmpFaqs = faqs
-                tmpFaqs.push(res.data.data)
+                tmpFaqs.push({...res.data.data})
                 setFaqs(tmpFaqs)
                 setIsActiveCreater(false)
+                resetForm({values:''})
             } else {
                 setFormCommError(res.data.message)
             }
@@ -46,7 +46,7 @@ const CreateFaq = ({faqs,setFaqs, setIsActiveCreater}) => {
     })
     
   return (
-    <div className='w-full h-full fixed top-0 left-0 bg-[#0003] grid place-items-center'>
+    <div className='w-full h-full fixed top-0 left-0 bg-[#0003] grid place-items-center z-50'>
         <div className='z-50 rounded-xl p-5 ring-2 bg-white relative pt-10'>
             <button onClick={()=>setIsActiveCreater(false)} className='absolute inline  bg-red-500 p-1 hover:text-white rounded-lg top-0 right-0'>close</button>
             <form onSubmit={formik.handleSubmit} className="flex flex-col justify-center p-2 rounded-md w-80">

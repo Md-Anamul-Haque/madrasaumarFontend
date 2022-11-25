@@ -6,9 +6,9 @@ const TopOfNavLogoAndNameOfORG = ({logoclass, nameclasses, ...refres}) => {
       <img className={logoclass} 
       src='/asset/files/logo.jpeg' alt='logo' />
       <h1 className={nameclasses}>
-        <span>madrasaUmar</span>
+        <span>مدرسة عمررض ي هللا عنهاإلسالمية- داكا</span>
         <br />
-        <span>madrasaUmar</span>
+        <span style={{textShadow:'1px 1px 1px pink'}}>মাদরাসা উমর রা. আল ইসলমিয়-ঢাকা(৩)</span>
       </h1>
     </div>
   )
