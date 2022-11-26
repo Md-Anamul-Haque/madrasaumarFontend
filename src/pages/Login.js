@@ -1,13 +1,32 @@
 import axios from 'axios'
 import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [userdata,setUserData]=useState({})
     const [isError,setIsError]=useState(null)
-
+    const [isLogin,setIsLogin]=useState(false);
+    const [isLoading,setIsLoading]=useState(true);
     const navigate = useNavigate();
+
+    useEffect(()=>{
+      axios.get('/api/login')
+      .then((res)=>{
+        console.log(res)
+        setIsLogin(res.data.isLogin)
+        setIsLoading(false)
+        setIsError(null);
+        if (res.data.isLogin) {
+          navigate('/admin')
+        }
+      })
+      .catch(err=>{
+        setIsLogin(false)
+        setIsError(err.message+'try again letter');
+        setIsLoading(false)
+      })
+    });
 
     const handleChange=(e)=>{
         setUserData({...userdata,...{[e.target.name]: e.target.value}})
@@ -27,6 +46,9 @@ const Login = () => {
     }
   return (
     <div className="max-w-sm block mx-auto my-20">
+        {isLoading && <h2 className='text-4xl text-center font-bold'>Loading...</h2>}
+        {isError && <h2 className='text-4xl text-center font-bold'>{isError}</h2>}
+      
   <Card>
     <form onSubmit={handleSubmitLogin} className="flex flex-col gap-4">
       <div>

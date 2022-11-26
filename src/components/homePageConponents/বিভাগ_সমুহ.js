@@ -66,10 +66,10 @@ const বিভাগ_সমুহ = () => {
             onMouseOver={()=>setIsSlideRun(false)}
            onMouseOut={()=>setIsSlideRun(true)} 
            ref={AllContainsRef} 
-           className='mx-5 px-10 flex w-full md:w-11/12 lg:w-10/12 h-72 shadow-2xl shadow-blue-500 overflow-x-auto space-x-9 md:rounded-3xl'
+           className='mx-5 px-10 flex w-full md:w-11/12 lg:w-10/12 h-72 shadow-2xl shadow-blue-500 overflow-x-auto space-x-9 md:rounded-3xl scrollbar_none '
            >
             {datas.map((data)=>{
-                                return(<img style={{boxShadow:'0px 2px 8px 3px #000'}} key={uuid()} className='my-5 rounded-lg' src={`/asset/files/${data.image}`} alt='vibags' />)
+                                return(<img style={{boxShadow:'0px 2px 8px 3px #000'}} key={uuid()} className='my-5 rounded-lg ' src={`/asset/files/${data.image}`} alt='vibags' />)
                               })}
         </div>}
     </div>

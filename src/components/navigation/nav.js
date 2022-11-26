@@ -64,9 +64,8 @@ const TopPartsOfNavHear=()=>{
       <TopPartsOfNavHear />
 
       {/* start nav hear  */}
-      <div 
-        className=' relative lg:static flex w-full h-14 justify-center bg-white dark:bg-gray-800 '
-      >
+      <div className=' relative lg:static flex w-full h-14 justify-end bg-white dark:bg-gray-800'>
+
         <button onClick={handleNavItemWithThreeDotNenu} 
           className="z-10 self-center absolute left-5 lg:hidden">
            <FaBars className='dark:text-white text-xl rounded-full h-10 w-10 p-2' /> 
@@ -74,16 +73,17 @@ const TopPartsOfNavHear=()=>{
 
 {/* Logo and name start hear */}
         <div 
-        className={`static duration-200 mx-auto lg:ml-5 ${showTopOfNav ? 'scale-0 w-0 h-0 mr-2  ' : ' scale-100 w-auto h-auto mr-auto'}`}>
+        className={`static duration-200 mx-auto lg:ml-5 ${showTopOfNav ? 'scale-0 w-0 h-0 mr-2  ' : ' scale-100 w-auto h-auto mr-auto'} w-full h-14 grid place-items-center justify-center`}>
           <TopOfNavLogoAndNameOfORG 
+            isNameIndex0={false}
             logoclass="rounded-lg h-12 p-1 mt-1 bg-teal-400 grid place-items-center"
-            nameclasses="dark:text-white font-bold"
-            className='flex place-items-center space-x-5 px-2 rounded-sm
-            bg-[#F1F1F1] dark:bg-[#0F3D3E] shadow-2xl ' />
+            nameclasses="dark:text-white text-sm pt-1 pb-3"
+            className='flex place-items-center space-x-5 p-2 rounded-sm
+            bg-transparent shadow-2xl w-screen lg:w-auto' 
+          />
         </div>
 {/* logo and name end hear  */}
         <NavElements {...{navItemsRef,showTopOfNav}} />
-      
       </div>
     </nav>
     <LeftIcons isActiveLeftIcons={isActiveLeftIcons} />
