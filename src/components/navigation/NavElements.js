@@ -17,36 +17,38 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
           found=true;
         }
         if(found){
+          // useDropRef.current.classList.add('')
           useDropRef.current.style.background='red'
-          // border="2px solid red";
           useDropRef.current.children[0].style.background='#ed76b0'
+          useDropRef.current.children[0].style.color='#fff'
         }else{
+          // useDropRef.current.classList.remove('active')
           useDropRef.current.style.background="none"
-          // border="none";
           useDropRef.current.children[0].style.background='none'
+          useDropRef.current.children[0].style.color=''
         }
         i++
       }
   },[useLocation()])
   return(
     <li ref={useDropRef} className='dropParent relative hover:bg-blue-500 dark:hover:bg-pink-500 
-                  w-[160px] max-w-sm lg:w-auto flex flex-col justify-left border-t-2 border-dotted px-2 rounded-xl
+                  w-[160px] max-w-sm lg:w-auto flex flex-col justify-left hover:border-t-2 border-dotted px-2 rounded-xl
                   scrollbar_none '>
-            <button 
-                className='text-gray-900 text-start dark:text-white duration-100 hover:text-red-600 dark:hover:text-white h-auto lg:h-[35px]  hover:bg-blue-500 dark:hover:bg-pink-500'>
+            <button className='text-start duration-100 h-auto lg:h-[35px] px-2 rounded-md'>
                   {lable}<ArrowDropDownIcon />
             </button>
            
-            <div className={`z-40 hidden dropChild w-full min-w-[160px] max-w-sm lg:w-40 border-1 shadow-lime-200
-                              flex-col lg:absolute bg-white dark:bg-gray-800 rounded-lg shadow-sm ${customClassess} scrollbar_none overflow-y-auto lg:overflow-y-visible`}>
+            <div className={`z-40 hidden dropChild w-full min-w-[160px] max-w-sm lg:w-40 border-1 lg:border-none shadow-sm lg:shadow-xl shadow-black dark:shadow-lime-200
+                              flex-col lg:absolute bg-white dark:bg-gray-800 rounded-lg ${customClassess} 
+                              py-2 scrollbar_none overflow-y-auto lg:overflow-y-visible`}>
               {datas && datas.map((data)=>{
                 const subDropdown =data.subDropdown || false;
                   return(<>
-                          {!subDropdown && <NavLink to={data.to} end className={'block text-gray-900 dark:text-white hover:text-white hover:bg-blue-500 dark:hover:bg-pink-500 rounded-xl p-2 hover:underline h-auto lg:h-[35px] w-full'}>
+                          {!subDropdown && <NavLink style={{textShadow:'0px 1px'}} to={data.to} end className={'block text-gray-900 dark:text-white lg:hover:text-white lg:hover:bg-[#ef4a23] dark:hover:bg-pink-500 px-2 pb-2 pt-1 hover:underline h-auto lg:h-[35px] w-full'}>
                             {data.lable}
                           </NavLink>}
                           
-                          {subDropdown && <span className={'w-10/12 scrollbar_none text-gray-900 dark:text-white lg:hover:text-white lg:hover:bg-blue-500 lg:dark:hover:bg-pink-500 rounded-md hover:border-b-2 border-dotted hover:pb-7 hover:lg:pb-0 lg:hover:pb-auto m-0'}>
+                          {subDropdown && <span className={'w-10/12 scrollbar_none text-gray-900 dark:text-white lg:hover:text-white lg:hover:bg-[#ef4a23] lg:dark:hover:bg-pink-500 hover:border-b-2 border-dotted hover:pb-7 hover:lg:pb-0 lg:hover:pb-auto m-0 '}>
                               {data.lable}
                           </span>}
                         </>
@@ -87,7 +89,7 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
     lg:border-none `}>
 
        <ul className={`lg:flex scrollbar_none overflow-y-auto lg:overflow-y-visible max-h-screen w-full rounded-md flex-col lg:flex-row lg:space-x-4 font-medium border-2 lg:border-none 
-          place-items-center ${showTopOfNav ? 'justify-center' :'justify-end'}  bg-white dark:bg-gray-800 dark:text-white lg:bg-none p-7 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 pb-20 pr-5`}>
+          place-items-center ${showTopOfNav ? 'justify-center' :'justify-end'}  bg-white dark:bg-gray-800 lg:bg-none p-7 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 pb-20 pr-5 text-black dark:text-white`}>
         
         <li>
           <NavLink to={'/'} className={staticNavLinkClasses}>
@@ -123,7 +125,7 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
                               {to:'/লক্ষ-উদ্দেশ্য',lable:'লক্ষ-উদ্দেশ্য'},
                               {to:'/পরিচালক',lable:'পরিচালক'},
                               {to:'#',subDropdown:true,lable:<Dropdown 
-                                                      {...{lable:'প্রশাসন',customClassess:'left-0 top-1 lg:-translate-x-full',datas:[
+                                                      {...{lable:'প্রশাসন',customClassess:'left-0 -top-2 lg:-translate-x-full',datas:[
                                                               {to:'/মজলিসে-শুরা',lable:'মজলিসে-শুরা'},
                                                               {to:'/মজলিসে-ইলমি',lable:'মজলিসে-ইলমি'},
                                                               {to:'/মজলিসে-স্টাফ',lable:'মজলিসে-স্টাফ'},

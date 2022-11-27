@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+
+.active{
+    @apply ring-4 hover:ring-8 rounded-full ring-slate-400 py-1 hover:drop-shadow-2xl hover:ring-blue-400 border-2 lg:border-none border-dotted lg:bg-transparent w-full h-full text-white font-bold
+   }
 .dropParent:hover>.dropChild{
     display: flex;
 }
