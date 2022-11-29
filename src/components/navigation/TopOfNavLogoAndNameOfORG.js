@@ -2,7 +2,7 @@ import React from 'react'
 
 const TopOfNavLogoAndNameOfORG = ({logoclass, isNameIndex0=true,nameclasses, ...refres}) => {
   return (
-    <div {...refres} >
+    <section {...refres} >
       <img className={logoclass} 
       src='/asset/files/logo.jpeg' alt='logo' />
       <h1 className={nameclasses}>
@@ -10,7 +10,7 @@ const TopOfNavLogoAndNameOfORG = ({logoclass, isNameIndex0=true,nameclasses, ...
         <br />
         <span style={{textShadow:'1px 1px 1px pink'}}>মাদরাসা উমর রা. আল ইসলমিয়-ঢাকা(৩)</span>
       </h1>
-    </div>
+    </section>
   )
 }
 

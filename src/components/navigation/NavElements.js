@@ -1,71 +1,72 @@
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+/* use static */
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+const DropElement=({data})=>{
+const subDropdown =data.subDropdown || false;
+  return(!subDropdown ? <li>
+            <NavLink to={data.to} end className={'block text-gray-900 dark:text-white lg:hover:text-white lg:hover:bg-[#ef4a23] dark:lg:hover:bg-pink-500 px-2 pb-2 pt-1 hover:underline h-auto w-full'}>
+              {data.lable}
+            </NavLink>
+          </li> : data.lable
+          )
+}
+
 
 const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
-  
+  const [isFoundActive,setIsFoundActive]=useState(false)
   const useDropRef = useRef(null)
+  const useDropButtonRef = useRef(null)
+  const useDropElementsRef = useRef(null)
+
+
+  const handleClickSmButton=()=>{
+    useDropButtonRef.current.classList.toggle('bg-green-500')
+    useDropButtonRef.current.classList.toggle('font-bold')
+    useDropElementsRef.current.classList.toggle('hidden')
+  }
+
+
   useEffect(()=>{
-      let i = 0,found=false;
-      while (i<useDropRef.current.children[1].children.length) {
-        // useDropRef.current.style.border="none";
-        if(useDropRef.current.children[1].children[i].className.indexOf('active') > -1){
-          found=true;
-        }
-        if(found){
-          useDropRef.current.classList.add('lg:bg-red')
-          // useDropRef.current.style.background='red'
-          // useDropRef.current.children[0].style.background='#ed76b0'
-          // useDropRef.current.children[0].style.color='#fff'
-        }else{
-          useDropRef.current.classList.remove('lg:bg-red')
-          // useDropRef.current.style.background="none"
-          // useDropRef.current.children[0].style.background='none'
-          // useDropRef.current.children[0].style.color=''
-        }
-        i++
+    let i = 0,found=false;
+    while (i<useDropRef.current.children[1].children.length) {
+      // useDropRef.current.style.border="none";
+      // console.log(useDropElementsRef.current.children[i].children[0].className)
+      if(useDropElementsRef.current.children[i].children[0].className.indexOf('active') > -1){
+        found=true;
       }
-  },[useLocation()])
+      if(found){
+        // useDropRef.current.classList.add('lg:bg-green-500')
+        // border="2px solid red";
+        useDropButtonRef.current.classList.add('lg:bg-green-300')
+      }else{
+        // useDropRef.current.classList.remove('lg:bg-green-500')
+        // border="none";
+        useDropButtonRef.current.classList.remove('lg:bg-green-300')
+      }
+      i++
+    }
+},[useLocation()])
+
   return(
-    <li ref={useDropRef} className='dropParent relative w-full lg:w-auto inline-flex flex-grow flex-col justify-center border-t-2 hover:border-dotted rounded-xl scrollbar_none '>
-            <button className='group whitespace-nowrap lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full text-center
-                              lg:rounded-md transition duration-75 hover:bg-white dark:text-white dark:hover:bg-gray-700
-                               h-auto lg:h-[35px]' 
-                  onClick={(e)=>{
-                          e.target.classList.toggle('bg-green-500')
-                          e.target.parentElement.children[1].classList.toggle('hidden')
-                    }}
+    <li ref={useDropRef} className='dropParent relative w-full lg:w-auto inline-flex flex-grow flex-col justify-center border-t-2 hover:border-dotted rounded-xl scrollbar_none lg:hover:bg-[#40e978] hover:rounded-none'>
+            <button ref={useDropButtonRef} className='group whitespace-nowrap text-lg font-serif lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full text-center lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9
+                               p-3 lg:p-1 px-2 lg:font-normal'
+                  onClick={handleClickSmButton}
                 >
-                {/* <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>{lable}</span> */}
                 {lable}
-                <ArrowDropDownIcon className='lg:bg-transparent '
-                              onClick={(e)=>{
-                          e.target.parentElement.classList.toggle('bg-green-500')
-                          e.target.parentElement.parentElement.children[1].classList.toggle('hidden')
-                        }} />
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd">
+                  </path>
+                </svg>
             </button>
-            <ul className={`hidden lg:hidden pl-2 dropChild w-full py-2 space-y-2 lg:w-40 shadow-lg lg:shadow-xl shadow-black dark:shadow-lime-200
+            <ul ref={useDropElementsRef} className={`hidden lg:hidden dropChild w-full py-2 space-y-2 lg:w-40 shadow-lg shadow-black dark:shadow-lime-200 lg:ring-2 
                               flex-col lg:absolute bg-white dark:bg-gray-800 rounded-lg ${customClassess} 
-                              py-2 scrollbar_none overflow-y-auto lg:overflow-y-visible`}>
-              {datas && datas.map((data)=>{
-                const subDropdown =data.subDropdown || false;
-                  return(<>
-                          {!subDropdown && <li>
-                            <NavLink style={{textShadow:'0px 1px'}} to={data.to} end className={'block text-gray-900 dark:text-white lg:hover:text-white lg:hover:bg-[#ef4a23] dark:lg:hover:bg-pink-500 px-2 pb-2 pt-1 hover:underline h-auto lg:h-[35px] w-full'}>
-                              {data.lable}
-                            </NavLink>
-                          </li>}
-                          
-                          {subDropdown && <li className={'w-full scrollbar_none text-gray-900 dark:text-white lg:hover:text-white lg:hover:pb-auto m-0 '}>
-                              {data.lable}
-                          </li>}
-                        </>
-                  )
-                })}
+                              scrollbar_none overflow-y-auto lg:overflow-y-visible`}>
+              {datas && datas.map((data)=><DropElement key={uuidv4()} {...{setIsFoundActive,data}} />)}
             </ul>
           </li>
 
@@ -75,7 +76,7 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
 
 const NavElements = ({navItemsRef,showTopOfNav}) => {
     const datas = [
-        // { url: '/', txt: <p className='flex'> <HomeIcon /> Home</p> },
+        { url: '/', txt: <p className='flex'> <HomeIcon /> Home</p> },
         // {url: '/donate', txt: 'Donate'},
         { url: '/faqs', txt: 'FAQs' },
         { url: '/notice', txt: 'Notice' },
@@ -85,7 +86,7 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
         // { url: '/runing_info', txt: '...info' },
       ];
       const Li = (data) => {
-        return (<li>
+        return (<li className='dropParent relative w-full lg:w-auto inline-flex flex-grow flex-col justify-center rounded-xl '>
           <NavLink className={data.classNames} end
             to={data.url}
           >
@@ -98,7 +99,7 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
 
 
       
-    const staticNavLinkClasses ='block lg:flex w-full text-gray-900 dark:text-white duration-100 hover:text-white hover:bg-blue-500 dark:hover:bg-pink-500 rounded-xl p-2 scrollbar_none';
+    const staticNavLinkClasses ='group whitespace-nowrap lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full text-center lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9 px-2';
     
     const biVagDropDownItems=[
               {to:'/শিক্ষা-তথ্য/বিভাগ/রওজাতুল-আতফাল',lable:'রওজাতুল আতফাল' },
@@ -117,16 +118,16 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
             {to:'/শিক্ষা-তথ্য/অনাবাসিক',lable:'অনাবাসিক' },
           ],
          shiKkhaTotthoDropDownItems=[
-              {subDropdown:true,lable:<Dropdown {...{
+              {subDropdown:true,lable:<Dropdown key={uuidv4()} {...{
                                           lable:'বিভাগ',
-                                          customClassess:'left-0 -top-2 lg:-translate-x-full', 
+                                          customClassess:'right-0 lg:translate-x-full -top-2', 
                                            datas:biVagDropDownItems
                                         }}
                     />
               },
-              {subDropdown:true,lable:<Dropdown {...{
+              {subDropdown:true,lable:<Dropdown key={uuidv4()} {...{
                                         lable:'নিয়ম-কানুন',
-                                        customClassess:'right-0 -top-2 text-center lg:translate-x-full', 
+                                        customClassess:'right-0 top-0 text-center lg:translate-x-full', 
                                         datas:niyomKanunsDropdownitems
                                       }} 
                     /> 
@@ -135,9 +136,9 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
           
         
     const VortiTotthoDropDownItems=[
-              {subDropdown:true,lable:<Dropdown {...{
+              {subDropdown:true,lable:<Dropdown key={uuidv4()}  {...{
                                           lable:'ভর্তি তথ্য',
-                                          customClassess:'right-0 -top-2 text-center lg:translate-x-full', 
+                                          customClassess:'left-0 text-center lg:-translate-x-full -top-2', 
                                            datas:[
                                               {to:'/ভর্তি/ভর্তি-তথ্য',lable:'ভর্তি তথ্য' },
                                               {to:'/ভর্তি/ভর্তি-পরামর্শ',lable:'ভর্তি পরামর্শ' },
@@ -147,9 +148,9 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
                                         }}
                     />
               },
-              {subDropdown:true,lable:<Dropdown {...{
+              {subDropdown:true,lable:<Dropdown key={uuidv4()} {...{
                                         lable:'নিয়ম-কানুন',
-                                        customClassess:'right-0 -top-2 text-center lg:translate-x-full', 
+                                        customClassess:'left-0 top-0 text-center lg:-translate-x-full', 
                                         datas:niyomKanunsDropdownitems
                                       }} 
                     /> 
@@ -158,17 +159,12 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
           
   return (
     <div ref={navItemsRef} 
-    className={`hidden lg:flex lg:h-14 w-64 max-w-sm lg:max-w-full max-h-[80vh] absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
+    className={`hidden lg:flex lg:h-14 w-64 max-w-sm lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
     lg:border-none justify-center`}>
 
        <ul className={`flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full rounded-md lg:space-x-4 font-medium border-2 lg:border-none content-start ${showTopOfNav ? 'lg:justify-center' :'lg:justify-end'} 
-            bg-white dark:bg-gray-800 lg:bg-none p-7 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 pb-20 pr-5 text-black dark:text-white `}>
-        
-        <li>
-          <NavLink to={'/'} className={staticNavLinkClasses}>
-            <HomeIcon /> Home
-          </NavLink>
-       </li>
+            bg-white dark:bg-gray-800 p-5 pb-10 border-b-8 border-double pr-5 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 text-black dark:text-white `}>
+
           {datas.map(data => {
             return (
               <Li key={uuidv4()} {...{
@@ -182,20 +178,20 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
           
           
           {/* শিক্ষা-তথ্য --> ... */}
-          <Dropdown {...{
+          <Dropdown key={uuidv4()} {...{
                     lable:'শিক্ষা-তথ্য', 
-                    customClassess:'right-0 top-auto lg:top-[35px]',
+                    customClassess:'right-0 bottom-0 lg:translate-y-full ',
                     datas:shiKkhaTotthoDropDownItems}}
             /> 
           {/* ভর্তি-তথ্য --> ... */}
-          <Dropdown {...{
+          <Dropdown key={uuidv4()} {...{
                     lable:'ভর্তি', 
-                    customClassess:'right-0 top-auto lg:top-[35px]',
+                    customClassess:'right-0 bottom-0 lg:translate-y-full ',
                     datas:VortiTotthoDropDownItems}}
             /> 
 
           {/* Services --> Contact US , ওয়াজ/বয়ান  */}
-          <Dropdown {...{lable:'Services',customClassess:'right-0 top-auto lg:top-[35px]',datas:[
+          <Dropdown key={uuidv4()} {...{lable:'Services',customClassess:'right-0 bottom-0 lg:translate-y-full ',datas:[
                         {to:'/contact',lable:<><ContactMailIcon /> Contact US</>},
                         {to:'/ওয়াজ-বয়ান',lable:'ওয়াজ ও বয়ান'},
                         {to:'/দ্বীনি-রচনা',lable:'দ্বীনি রচনা'},
@@ -207,12 +203,12 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
                     ]}}
            />
           {/* Own -->about,আমাদের অর্জন */}
-          <Dropdown {...{lable:'Own',customClassess:'right-0 top-auto lg:top-[35px]',datas:[
+          <Dropdown key={uuidv4()} {...{lable:'Own',customClassess:'right-0 bottom-0 lg:translate-y-full ',datas:[
                               {to:'/about',lable:<><InfoIcon /> About</>},
                               {to:'/orjon',lable:'আমাদের অর্জন'},
                               {to:'/লক্ষ-উদ্দেশ্য',lable:'লক্ষ-উদ্দেশ্য'},
                               {to:'/পরিচালক',lable:'পরিচালক'},
-                              {to:'#',subDropdown:true,lable:<Dropdown 
+                              {to:'#',subDropdown:true,lable:<Dropdown key={uuidv4()} 
                                                       {...{lable:'প্রশাসন',customClassess:'left-0 -top-2 lg:-translate-x-full',datas:[
                                                               {to:'/মজলিসে-শুরা',lable:'মজলিসে-শুরা'},
                                                               {to:'/মজলিসে-ইলমি',lable:'মজলিসে-ইলমি'},
@@ -224,9 +220,9 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
                               
                             ]}} />
 
-        <Dropdown {...{
+        <Dropdown key={uuidv4()} {...{
           lable:'অনুদান',
-          customClassess:'right-0 text-center top-auto lg:top-[35px]',
+          customClassess:'right-0 text-center bottom-0 lg:translate-y-full ',
           datas:[
             {to:'/দানোর-ফজিলত',lable:'দানোর ফজিলত'},
             {to:'/donate',lable:'Donate'},

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import { FaBars } from "react-icons/fa";
 import LeftIcons from './LeftIcons';
 import NavElements from './NavElements';
@@ -7,10 +8,12 @@ import TopOfNavLogoAndNameOfORG from './TopOfNavLogoAndNameOfORG';
 const Nav = () => {
   const [isActiveLeftIcons, setIsActiveLeftIcons] = useState(false)
   const [showTopOfNav,setShowTopOfNav]=useState(true)
+  const [isActiveNavMenu,setIsActiveNavMenu]=useState(false)
   const navItemsRef = useRef(null);
   const handleNavItemWithThreeDotNenu = (e,bb) => {
+    setIsActiveNavMenu(!isActiveNavMenu)
     navItemsRef.current.classList.toggle("hidden");
-    navItemsRef.current.classList.toggle("flex");
+    // navItemsRef.current.classList.toggle("flex");
     e.target.classList.toggle("bg-blue-300");
   }
 
@@ -68,18 +71,19 @@ const TopPartsOfNavHear=()=>{
 
         <button onClick={handleNavItemWithThreeDotNenu} 
           className="z-10 self-center absolute left-5 lg:hidden">
-           <FaBars className='dark:text-white text-xl rounded-full h-10 w-10 p-2' /> 
+           {!isActiveNavMenu ? <FaBars className='dark:text-white text-xl rounded-full h-10 w-10 p-2' />:
+           <AiOutlineClose className='dark:text-white text-xl rounded-full h-10 w-10 p-2' />} 
         </button>
 
 {/* Logo and name start hear */}
         <div 
-        className={`lg:ml-5 ${showTopOfNav ? 'hidden' : 'blod'} mx-auto w-full h-14 `}>
+        className={`lg:ml-5 justify-center ${showTopOfNav ? 'hidden' : 'grid'} mx-auto w-full `}>
           <TopOfNavLogoAndNameOfORG 
             isNameIndex0={false}
-            logoclass="rounded-lg h-12 p-1 mt-1 bg-teal-400 grid place-items-center"
-            nameclasses="dark:text-white text-sm pt-1 pb-3"
-            className='flex place-items-center space-x-5 p-2 rounded-sm
-            bg-transparent shadow-2xl w-screen lg:w-auto' 
+            logoclass="rounded-lg h-12 p-1 bg-teal-400"
+            nameclasses="text-purple-500 dark:text-white font-sans pt-1 pb-3 text-sm sm:text-md md:text-lg flex place-items-center "
+            className=' mx-auto flex place-items-center whitespace-nowrap space-x-4 rounded-sm
+            bg-transparent shadow-2xl lg:w-auto w-full h-full content-center' 
           />
         </div>
 {/* logo and name end hear  */}

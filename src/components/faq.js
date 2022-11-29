@@ -15,18 +15,19 @@ import * as React from 'react';
   return (<>
   {(answer || question) &&
      <div>
-      <Accordion expanded={expanded === 'panel1'} className='bg-white rounded-md' onChange={handleChange('panel1')}>
+      <Accordion expanded={expanded === 'panel1'} className='bg-white dark:bg-gray-700 dark:text-white rounded-md' onChange={handleChange('panel1')}>
         <AccordionSummary
           expandIcon={ <ExpandMoreIcon /> }
           aria-controls="panel1bh-content"
           id="panel1bh-header"
+          className='dark:bg-gray-800 dark:text-white '
         >
-          <Typography className='shadow-sm font-serif' sx={{ fontSize:'1.3rem', width: '100%', flexShrink: 0 }}>
+          <Typography className='shadow-sm font-serif ' sx={{ fontSize:'1.3rem', width: '100%', flexShrink: 1 }}>
             {question}
           </Typography>
           {/* <Typography sx={{ color: 'text.secondary' }}>Question</Typography> */}
         </AccordionSummary>
-        <AccordionDetails className='bg-lime-50 p-2 mx-1 rounded-sm'>
+        <AccordionDetails className='bg-lime-50 dark:bg-gray-500 dark:text-white p-2 mx-1 rounded-sm'>
           <Typography className='text-sm font-mono' >
             {answer}
           </Typography>
