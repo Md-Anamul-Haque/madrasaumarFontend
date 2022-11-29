@@ -57,14 +57,14 @@ const TopPartsOfNavHear=()=>{
   return (<>
     <div className="h-36"></div> 
     <nav 
-      className={` z-50 flex flex-col top-0 w-full
-       ${showTopOfNav ? 'translate-y-0' : '-translate-y-[74px]'} fixed duration-300 left-0  shadow-lg lg:items-center z-10`}
+      className={` z-50 flex flex-col w-full
+       ${showTopOfNav ? 'top-0' : '-top-[74px]'} fixed duration-300 left-0  shadow-lg lg:items-center z-10`}
     >
 
       <TopPartsOfNavHear />
 
       {/* start nav hear  */}
-      <div className=' relative lg:static flex w-full h-14 justify-end bg-white dark:bg-gray-800'>
+      <div className={`relative lg:static flex w-full h-14 justify-center bg-white dark:bg-gray-800`}>
 
         <button onClick={handleNavItemWithThreeDotNenu} 
           className="z-10 self-center absolute left-5 lg:hidden">
@@ -73,7 +73,7 @@ const TopPartsOfNavHear=()=>{
 
 {/* Logo and name start hear */}
         <div 
-        className={`static duration-200 mx-auto lg:ml-5 ${showTopOfNav ? 'scale-0 w-0 h-0 mr-2  ' : ' scale-100 w-auto h-auto mr-auto'} w-full h-14 grid place-items-center justify-center`}>
+        className={`lg:ml-5 ${showTopOfNav ? 'hidden' : 'blod'} mx-auto w-full h-14 `}>
           <TopOfNavLogoAndNameOfORG 
             isNameIndex0={false}
             logoclass="rounded-lg h-12 p-1 mt-1 bg-teal-400 grid place-items-center"
