@@ -162,7 +162,7 @@ const NavElements = ({navItemsRef}) => {
           
   return (
     <div ref={navItemsRef} 
-    className={`hidden lg:flex h-[80vh] lg:h-14 w-64 max-w-sm lg:w-auto lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
+    className={`hidden bg-transparent lg:flex h-[80vh] lg:h-14 w-64 max-w-sm lg:w-auto lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
     lg:border-none justify-center`}>
 {/*  ${showTopOfNav ? 'lg:justify-center' :'lg:justify-end'}  */}
        <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-4 font-medium border-2 lg:border-none content-start lg:justify-center

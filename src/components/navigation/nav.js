@@ -79,13 +79,13 @@ const TopPartsOfNavHear=()=>{
 
 {/* Logo and name start hear */}
         <div 
-        className={`lg:ml-5 justify-center ${showTopOfNav ? 'scale-0 w-0 lg:w-0 absolute -z-50' : 'scale-100 w-full lg:w-auto static z-0'} duration-200 grid mx-auto `}>
+        className={`lg:ml-5 max-h-14 bg-transparent justify-center ${showTopOfNav ? 'scale-0 w-0 lg:w-0 absolute -z-50' : 'scale-100 w-full lg:w-auto static z-0'} duration-200 grid mx-auto `}>
           <TopOfNavLogoAndNameOfORG 
             isNameIndex0={false}
-            logoclass="rounded-lg h-12 p-1 bg-teal-400 mr-2"
-            nameclasses="text-purple-500 dark:text-white font-sans pt-1 pb-3 hidden sm:inline-flex sm:text-lg md:text-xl lg:text-lg place-items-center "
-            className=' mx-auto flex place-items-center whitespace-nowrap space-x-4 rounded-sm
-            bg-transparent shadow-2xl lg:w-auto w-full h-full content-center' 
+            logoclass="rounded-lg h-12 p-1 mt-2 bg-teal-400 mr-2 bg-transparent"
+            nameclasses="text-purple-500 bg-transparent dark:text-white font-sans pt-1 pb-3 hidden sm:inline-flex sm:text-lg md:text-xl lg:text-lg place-items-center "
+            className=' mx-auto max-h-14 flex place-items-center whitespace-nowrap space-x-4 rounded-sm
+            bg-transparent lg:w-auto w-full h-full content-center' 
           />
         </div>
 {/* logo and name end hear  */}
