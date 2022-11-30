@@ -52,8 +52,9 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
 },[useLocation()])
 
   return(
-    <li ref={useDropRef} className='dropParent relative w-full lg:w-auto inline-flex flex-grow flex-col justify-center border-t-2 hover:border-dotted rounded-xl scrollbar_none lg:hover:bg-[#40e978] hover:rounded-none'>
-            <button ref={useDropButtonRef} className='group whitespace-nowrap text-lg font-serif lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full text-center lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9
+    <li ref={useDropRef} className='dropParent relative w-full lg:w-auto inline-flex flex-grow flex-col justify-center border-t-2 border-transparent hover:border-purple-500 hover:border-dotted rounded-xl scrollbar_none lg:hover:bg-[#9eb1ff] dark:lg:hover:bg-[#009fb8] hover:rounded-sm'>
+
+            <button ref={useDropButtonRef} className='group whitespace-nowrap text-lg lg:text-md font-serif lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full text-center lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9
                                p-3 lg:p-1 px-2 lg:font-normal'
                   onClick={handleClickSmButton}
                 >
@@ -63,7 +64,7 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
                   </path>
                 </svg>
             </button>
-            <ul ref={useDropElementsRef} className={`hidden lg:hidden dropChild w-full py-2 space-y-2 lg:w-40 shadow-lg shadow-black dark:shadow-lime-200 lg:ring-2 
+            <ul ref={useDropElementsRef} className={`hidden pl-5 lg:pl-0 lg:hidden dropChild w-full py-2 space-y-2 lg:w-40 shadow-lg shadow-black dark:shadow-lime-300 lg:ring-2 
                               flex-col lg:absolute bg-white dark:bg-gray-800 rounded-lg ${customClassess} 
                               scrollbar_none overflow-y-auto lg:overflow-y-visible`}>
               {datas && datas.map((data)=><DropElement key={uuidv4()} {...{setIsFoundActive,data}} />)}
@@ -74,12 +75,12 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
 }
 
 
-const NavElements = ({navItemsRef,showTopOfNav}) => {
+const NavElements = ({navItemsRef}) => {
     const datas = [
         { url: '/', txt: <p className='flex'> <HomeIcon /> Home</p> },
         // {url: '/donate', txt: 'Donate'},
         { url: '/faqs', txt: 'FAQs' },
-        { url: '/notice', txt: 'Notice' },
+        // { url: '/notice', txt: 'Notice' },
         // { url: '/book', txt: 'Books' },
         // {url: '/orjon' , txt:'আমাদের অর্জন'},
         // { url: '/about', txt: 'About' },
@@ -132,6 +133,7 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
                                       }} 
                     /> 
               },
+              {to:'/notice',lable:'notice'}
             ];
           
         
@@ -155,14 +157,15 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
                                       }} 
                     /> 
               },
+              {to:'/notice',lable:'notice'}
             ];
           
   return (
     <div ref={navItemsRef} 
-    className={`hidden lg:flex lg:h-14 w-64 max-w-sm lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
+    className={`hidden lg:flex h-[80vh] lg:h-14 w-64 max-w-sm lg:w-auto lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
     lg:border-none justify-center`}>
-
-       <ul className={`flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full rounded-md lg:space-x-4 font-medium border-2 lg:border-none content-start ${showTopOfNav ? 'lg:justify-center' :'lg:justify-end'} 
+{/*  ${showTopOfNav ? 'lg:justify-center' :'lg:justify-end'}  */}
+       <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-4 font-medium border-2 lg:border-none content-start lg:justify-center
             bg-white dark:bg-gray-800 p-5 pb-10 border-b-8 border-double pr-5 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 text-black dark:text-white `}>
 
           {datas.map(data => {
@@ -203,7 +206,7 @@ const NavElements = ({navItemsRef,showTopOfNav}) => {
                     ]}}
            />
           {/* Own -->about,আমাদের অর্জন */}
-          <Dropdown key={uuidv4()} {...{lable:'Own',customClassess:'right-0 bottom-0 lg:translate-y-full ',datas:[
+          <Dropdown key={uuidv4()} {...{lable:'মাদরাসা',customClassess:'right-0 bottom-0 lg:translate-y-full ',datas:[
                               {to:'/about',lable:<><InfoIcon /> About</>},
                               {to:'/orjon',lable:'আমাদের অর্জন'},
                               {to:'/লক্ষ-উদ্দেশ্য',lable:'লক্ষ-উদ্দেশ্য'},

@@ -58,10 +58,11 @@ const TopPartsOfNavHear=()=>{
   )
 }
   return (<>
+          {isActiveNavMenu && <div className='fixed top-0 left-0 w-full h-full lg:hidden bg-[#0003]'></div>}
     <div className="h-36"></div> 
     <nav 
       className={` z-50 flex flex-col w-full
-       ${showTopOfNav ? 'top-0' : '-top-[74px]'} fixed duration-300 left-0  shadow-lg lg:items-center z-10`}
+       ${showTopOfNav ? 'top-0' : '-top-[74px]'} fixed duration-200 left-0  shadow-lg lg:items-center`}
     >
 
       <TopPartsOfNavHear />
@@ -72,22 +73,24 @@ const TopPartsOfNavHear=()=>{
         <button onClick={handleNavItemWithThreeDotNenu} 
           className="z-10 self-center absolute left-5 lg:hidden">
            {!isActiveNavMenu ? <FaBars className='dark:text-white text-xl rounded-full h-10 w-10 p-2' />:
-           <AiOutlineClose className='dark:text-white text-xl rounded-full h-10 w-10 p-2' />} 
+           <AiOutlineClose className='dark:text-white text-xl rounded-full h-10 w-10 p-2 ring-1' />} 
         </button>
+
 
 {/* Logo and name start hear */}
         <div 
-        className={`lg:ml-5 justify-center ${showTopOfNav ? 'hidden' : 'grid'} mx-auto w-full `}>
+        className={`lg:ml-5 justify-center ${showTopOfNav ? 'scale-0 w-0 lg:w-0 absolute -z-50' : 'scale-100 w-full lg:w-auto static z-0'} duration-200 grid mx-auto `}>
           <TopOfNavLogoAndNameOfORG 
             isNameIndex0={false}
-            logoclass="rounded-lg h-12 p-1 bg-teal-400"
-            nameclasses="text-purple-500 dark:text-white font-sans pt-1 pb-3 text-sm sm:text-md md:text-lg flex place-items-center "
+            logoclass="rounded-lg h-12 p-1 bg-teal-400 mr-2"
+            nameclasses="text-purple-500 dark:text-white font-sans pt-1 pb-3 hidden sm:inline-flex sm:text-lg md:text-xl lg:text-lg place-items-center "
             className=' mx-auto flex place-items-center whitespace-nowrap space-x-4 rounded-sm
             bg-transparent shadow-2xl lg:w-auto w-full h-full content-center' 
           />
         </div>
 {/* logo and name end hear  */}
-        <NavElements {...{navItemsRef,showTopOfNav}} />
+        {/* <NavElements {...{navItemsRef,showTopOfNav}} /> */}
+        <NavElements {...{navItemsRef}} />
       </div>
     </nav>
     <LeftIcons isActiveLeftIcons={isActiveLeftIcons} />
