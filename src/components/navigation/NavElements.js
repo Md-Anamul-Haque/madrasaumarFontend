@@ -64,7 +64,7 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
                   </path>
                 </svg>
             </button>
-            <ul ref={useDropElementsRef} className={`hidden pl-5 lg:pl-0 lg:hidden dropChild w-full py-2 space-y-2 lg:w-40 shadow-lg shadow-black dark:shadow-lime-300 lg:ring-2 
+            <ul ref={useDropElementsRef} className={`hidden pl-5 lg:pl-0 lg:hidden dropChild w-full py-2 space-y-2 lg:w-40 shadow-md dark:shadow-lg shadow-black dark:shadow-lime-300 lg:ring-2 
                               flex-col lg:absolute bg-white dark:bg-gray-800 rounded-lg ${customClassess} 
                               scrollbar_none overflow-y-auto lg:overflow-y-visible`}>
               {datas && datas.map((data)=><DropElement key={uuidv4()} {...{setIsFoundActive,data}} />)}
@@ -128,7 +128,7 @@ const NavElements = ({navItemsRef}) => {
               },
               {subDropdown:true,lable:<Dropdown key={uuidv4()} {...{
                                         lable:'নিয়ম-কানুন',
-                                        customClassess:'right-0 top-0 text-center lg:translate-x-full', 
+                                        customClassess:'right-0 -top-2 text-center lg:translate-x-full', 
                                         datas:niyomKanunsDropdownitems
                                       }} 
                     /> 
@@ -165,7 +165,7 @@ const NavElements = ({navItemsRef}) => {
     className={`hidden bg-transparent lg:flex h-[80vh] lg:h-14 w-64 max-w-sm lg:w-auto lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
     lg:border-none justify-center`}>
 {/*  ${showTopOfNav ? 'lg:justify-center' :'lg:justify-end'}  */}
-       <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-4 font-medium border-2 lg:border-none content-start lg:justify-center
+       <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-2 font-medium border-2 lg:border-none content-start lg:justify-center
             bg-white dark:bg-gray-800 p-5 pb-10 border-b-8 border-double pr-5 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 text-black dark:text-white `}>
 
           {datas.map(data => {
@@ -183,7 +183,7 @@ const NavElements = ({navItemsRef}) => {
           {/* শিক্ষা-তথ্য --> ... */}
           <Dropdown key={uuidv4()} {...{
                     lable:'শিক্ষা-তথ্য', 
-                    customClassess:'right-0 bottom-0 lg:translate-y-full ',
+                    customClassess:'left-0 bottom-0 lg:translate-y-full ',
                     datas:shiKkhaTotthoDropDownItems}}
             /> 
           {/* ভর্তি-তথ্য --> ... */}
