@@ -24,6 +24,7 @@ const Nav = () => {
   const handleSetTimeOutLeftIcon = setTimeout(() => {
     setIsActiveLeftIcons(false)
   }, 3000);
+  
   useEffect(()=>{
       // let lastVal = 0
       // window.onscroll = function(){
@@ -68,14 +69,11 @@ const Nav = () => {
   
 const TopPartsOfNavHear=()=>{
   return(
-
     <div ref={TopOfNavLogoAndNameOfORGRef} className=' grid justify-center ' style={{}}>
-
     <TopOfNav 
     className='w-screen px-2 content-center md:px-10 italic
     bg-[#EEE3CB] dark:bg-[#D7C0AE] text-black dark:text-[#F2F2F2]
      h-8 items-center flex space-x-5 flex-wrap' />
-
     <TopOfNavLogoAndNameOfORG 
     //  ar={true} bn={true}
     ar_bn_bnar='true'
@@ -87,15 +85,13 @@ const TopPartsOfNavHear=()=>{
     className='flex font-serif text-xl lg:text-2xl xl:text-3xl justify-center space-x-4 h-auto items-center place-content-center
       bg-[#EAEAEA] dark:bg-[#dcbde6] text-black dark:text-black' />
   </div>
-
   )
 }
 
 
-  return (<>
-          {isActiveNavMenu && <div onClick={handleNavItemWithThreeDotNenu} className='fixed top-0 left-0 w-full h-full lg:hidden bg-[#000]'></div>}
+  return (<section className='max-w-[1300px]'>
+    {/* {isActiveNavMenu && <div onClick={handleNavItemWithThreeDotNenu} className='fixed top-0 left-0 w-full h-full lg:hidden bg-[#0003]'></div>} */}
     <TopPartsOfNavHear />
-    <div className={isFixedNavOfTop ? 'h-14' : 'h-0' }></div>
     {/* 
     <nav ref={navbarRef}
       className={` z-50 flex flex-col w-full top-0
@@ -116,13 +112,13 @@ const TopPartsOfNavHear=()=>{
 
 {/* Logo and name start hear */}
         <div 
-        className={`lg:ml-5 max-h-14 bg-transparent justify-center ${isFixedNavOfTop ? 'scale-100 w-full lg:w-auto static z-0' : 'scale-0 w-0 lg:w-0 absolute -z-50' } duration-200 grid mx-auto `}>
+        className={`lg:ml-5 max-h-14 bg-transparent justify-center ${isFixedNavOfTop ? 'scale-100 w-full lg:w-auto static z-0' : 'scale-0 w-0 lg:w-0 absolute -z-50' } duration-200 grid mx-auto`}>
           <TopOfNavLogoAndNameOfORG 
-            bn={true} en={true}
+            en={true}
             logoclass="rounded-lg h-12 p-1 bg-teal-400"
-            nameclasses="text-purple-500 bg-transparent dark:text-white text-center font-serif hidden sm:inline sm:text-lg md:text-xl lg:text-sm place-items-center "
-            className=' mx-auto max-h-14 font-bold justify-center flex place-items-center whitespace-nowrap space-x-4 rounded-sm
-            bg-transparent lg:w-auto w-full h-full content-center' 
+            nameclasses="text-purple-500 bg-transparent dark:text-white text-center sm:inline text-2xl md:text-xl lg:text-4xl place-items-center "
+            className=' mx-auto max-h-14 font-bold justify-center inline-flex place-items-center whitespace-nowrap space-x-1 font-sans rounded-sm
+            bg-transparent lg:w-auto w-auto h-full content-center' 
           />
         </div>
 {/* logo and name end hear  */}
@@ -130,8 +126,9 @@ const TopPartsOfNavHear=()=>{
         <NavElements {...{navItemsRef}} />
       </div>
     </nav>
+    {/* <div className={isFixedNavOfTop ? 'h-14 w-0' : 'h-0 w-0' }></div> */}
     <LeftIcons isActiveLeftIcons={isActiveLeftIcons} />
-  </>
+  </section>
 
   )
 }

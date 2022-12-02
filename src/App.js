@@ -38,7 +38,7 @@ function App() {
   //   setDarkKey(tmpDarkValue);
   // }
   
-  return (<div className='antialiased text-slate-500 dark:text-slate-400 bg-gray-100 dark:bg-slate-900'>
+  return (<div className='antialiased text-slate-500 dark:text-slate-400 dark:bg-slate-900'>
   {/* <BrowserRouter> */}
           <Nav />
           {/* <Navigate to="/admin" replace /> */}

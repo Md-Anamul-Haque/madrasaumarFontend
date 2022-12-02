@@ -8,3 +8,9 @@
 .font-NikoshBAN{
     font-family: NikoshBAN;
 }
+
+body {
+  background-image: url("./asset/paper.gif");
+  background-color: #fff;
+  max-width: 1300px;
+}

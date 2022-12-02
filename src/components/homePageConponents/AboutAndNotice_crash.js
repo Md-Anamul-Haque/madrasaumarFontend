@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const AboutAndNotice_crash = () => {
   return (
@@ -42,4 +42,4 @@ const AboutAndNotice_crash = () => {
   )
 }
 
-export default AboutAndNotice_crash
+export default memo(AboutAndNotice_crash)

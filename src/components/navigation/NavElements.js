@@ -176,7 +176,7 @@ const NavElements = ({navItemsRef}) => {
     className={`hidden bg-transparent lg:flex h-[80vh] lg:h-14 w-64 max-w-sm lg:w-auto lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
     lg:border-none justify-center`}>
 {/*  ${showTopOfNav ? 'lg:justify-center' :'lg:justify-end'}  */}
-       <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-0 font-medium border-2 lg:border-none content-start lg:justify-center
+       <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-0 font-medium border-2 lg:border-none content-start lg:justify-center xl:mr-14 2xl:mr-32
             bg-white dark:bg-gray-800 p-5 pb-10 border-b-8 border-double pr-1 lg:p-0 lg:pl-1 space-y-5 lg:space-y-0 text-black dark:text-white text-sm`}>
 
           {datas.map(data => {
