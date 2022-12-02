@@ -2,9 +2,12 @@
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import React, { memo, useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
+
 const DropElement=({data})=>{
 const subDropdown =data.subDropdown || false;
   return(!subDropdown ? <li>
@@ -26,6 +29,8 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
   const handleClickSmButton=()=>{
     useDropButtonRef.current.classList.toggle('bg-green-500')
     useDropButtonRef.current.classList.toggle('font-bold')
+    useDropButtonRef.current.classList.toggle('justify-center')
+    useDropButtonRef.current.classList.toggle('lg:justify-start')
     useDropElementsRef.current.classList.toggle('hidden')
   }
 
@@ -52,20 +57,25 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
 },[useLocation()])
 
   return(
-    <li ref={useDropRef} className='dropParent relative w-full lg:w-auto inline-flex flex-grow flex-col justify-center border-t-2 border-transparent hover:border-purple-500 hover:border-dotted rounded-xl scrollbar_none lg:hover:bg-[#9eb1ff] dark:lg:hover:bg-[#009fb8] hover:rounded-sm'>
+    <li ref={useDropRef} className='dropParent relative w-full lg:w-auto inline-flex flex-grow flex-col justify-center border-t-2 border-transparent hover:border-purple-500 hover:lg:border-dotted rounded-xl scrollbar_none lg:hover:bg-[#9eb1ff] dark:lg:hover:bg-[#009fb8] hover:rounded-sm'>
 
-            <button ref={useDropButtonRef} className='group whitespace-nowrap text-lg lg:text-md font-serif lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full text-center lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9
+            <button ref={useDropButtonRef} className='group whitespace-nowrap text-lg lg:text-sm xl:text-lg font-serif lg:bg-transparent items-center text-gray-900 rounded-lg inline-flex w-full lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9
                                p-3 lg:p-1 px-2 lg:font-normal'
                   onClick={handleClickSmButton}
                 >
                 {lable}
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd">
-                  </path>
+                <svg className="w-6 h-6 lg:w-3 lg:h-3 xl:w-6 xl:h-6" 
+                      fill="currentColor" 
+                      viewBox="0 0 20 20" 
+                      xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" 
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd">
+                        </path>
                 </svg>
             </button>
             <ul ref={useDropElementsRef} className={`hidden pl-5 lg:pl-0 lg:hidden dropChild w-full py-2 space-y-2 lg:w-40 shadow-md dark:shadow-lg shadow-black dark:shadow-lime-300 lg:ring-2 
-                              flex-col lg:absolute bg-white dark:bg-gray-800 rounded-lg ${customClassess} 
+                              flex-col lg:absolute bg-white dark:bg-gray-800 rounded-lg pb-2 ${customClassess} 
                               scrollbar_none overflow-y-auto lg:overflow-y-visible`}>
               {datas && datas.map((data)=><DropElement key={uuidv4()} {...{setIsFoundActive,data}} />)}
             </ul>
@@ -77,8 +87,9 @@ const Dropdown = ({lable, customClassess="right-0",sub=false,datas})=>{
 
 const NavElements = ({navItemsRef}) => {
     const datas = [
-        { url: '/', txt: <p className='flex'> <HomeIcon /> Home</p> },
+        { url: '/', txt:<HomeIcon /> },
         // {url: '/donate', txt: 'Donate'},
+        { url: '/ফতোয়া', txt: <p className='flex'>ফতোয়া &nbsp; <QuestionAnswerIcon /></p>},
         { url: '/faqs', txt: 'FAQs' },
         // { url: '/notice', txt: 'Notice' },
         // { url: '/book', txt: 'Books' },
@@ -100,7 +111,7 @@ const NavElements = ({navItemsRef}) => {
 
 
       
-    const staticNavLinkClasses ='group whitespace-nowrap lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full text-center lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9 px-2';
+    const staticNavLinkClasses ='group whitespace-nowrap lg:bg-transparent items-center text-gray-900 rounded-lg flex w-full lg:rounded-md transition duration-75 hover:bg-pink-500 dark:text-white hover:text-white h-9 px-2';
     
     const biVagDropDownItems=[
               {to:'/শিক্ষা-তথ্য/বিভাগ/রওজাতুল-আতফাল',lable:'রওজাতুল আতফাল' },
@@ -165,8 +176,8 @@ const NavElements = ({navItemsRef}) => {
     className={`hidden bg-transparent lg:flex h-[80vh] lg:h-14 w-64 max-w-sm lg:w-auto lg:max-w-full max-h-[80vh] lg:max-h-14 absolute lg:sticky duration-200 bottom-0 translate-y-full lg:translate-y-0 left-0  
     lg:border-none justify-center`}>
 {/*  ${showTopOfNav ? 'lg:justify-center' :'lg:justify-end'}  */}
-       <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-2 font-medium border-2 lg:border-none content-start lg:justify-center
-            bg-white dark:bg-gray-800 p-5 pb-10 border-b-8 border-double pr-5 lg:p-0 lg:px-5 lg:mr-10 space-y-5 lg:space-y-0 text-black dark:text-white `}>
+       <ul className={`z-50 flex flex-col lg:flex-row scrollbar_none overflow-y-auto lg:overflow-y-visible w-full h-full rounded-md lg:space-x-0 font-medium border-2 lg:border-none content-start lg:justify-center
+            bg-white dark:bg-gray-800 p-5 pb-10 border-b-8 border-double pr-1 lg:p-0 lg:pl-1 space-y-5 lg:space-y-0 text-black dark:text-white text-sm`}>
 
           {datas.map(data => {
             return (
@@ -225,7 +236,7 @@ const NavElements = ({navItemsRef}) => {
 
         <Dropdown key={uuidv4()} {...{
           lable:'অনুদান',
-          customClassess:'right-0 text-center bottom-0 lg:translate-y-full ',
+          customClassess:'right-0 bottom-0 lg:translate-y-full ',
           datas:[
             {to:'/দানোর-ফজিলত',lable:'দানোর ফজিলত'},
             {to:'/donate',lable:'Donate'},

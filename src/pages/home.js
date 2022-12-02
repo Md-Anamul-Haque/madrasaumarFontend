@@ -1,6 +1,4 @@
-import { Button } from '@mui/material';
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import HomeCarousel from '../components/HomeCarousel';
 import AboutAndNotice_crash from '../components/homePageConponents/AboutAndNotice_crash';
 import AmaderLokkhoAndUddesho from '../components/homePageConponents/AmaderLokkhoAndUddesho';
@@ -10,7 +8,6 @@ import LocationAdderssAndMap from '../components/homePageConponents/LocationAdde
 import Marquee from '../components/homePageConponents/Marquee';
 import আমাদের_সার্ভিস from '../components/homePageConponents/আমাদের_সার্ভিস';
 import বিভাগ_সমুহ from '../components/homePageConponents/বিভাগ_সমুহ';
-import LogoCard from '../components/LogoCard';
 import FAQs from './FAQs';
 
 const Home = () => {
@@ -28,13 +25,15 @@ const Home = () => {
       <AmaderOrjons />
       <আমাদের_সার্ভিস />
       <AmaderLokkhoAndUddesho />
-      <div className='grid mb-20 justify-center pt-10'>
+      
+      {/* <div className='grid mb-20 justify-center pt-10'>
         <div className="flex flex-wrap items-center container my-10">
         <LogoCard />
-        {/* <Stuffs /> */}
+        {/* <Stuffs /> *
         <NavLink className="w-full text-center h-10" to={'/about'} ><Button>more...</Button></NavLink>
       </div>
       </div>
+       */}
       <LocationAdderssAndMap />
               {/* <NavLink to={'/donate#start'} preventScrollReset={true} >
           <BlinkDonateButton />

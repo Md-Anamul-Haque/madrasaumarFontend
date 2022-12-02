@@ -3,9 +3,18 @@
 @tailwind utilities;
 
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@300&display=swap');
+.font-rubik-microbe{
+    font-family: 'Rubik Microbe', cursive;
 
+}
+.arabic-font{
+    font-family: 'Noto Naskh Arabic', serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-family: 'Rubik Microbe', cursive;
+}
 .active{
-    @apply ring-4 hover:ring-8 rounded-full ring-slate-400 py-1 hover:drop-shadow-2xl hover:ring-blue-400 border-2 lg:border-none border-dotted lg:bg-transparent w-full text-black dark:text-white  font-bold
+    @apply ring-4 border-2 hover:drop-shadow-2xl hover:ring-blue-400 rounded-md mr-3 lg:bg-transparent w-auto text-black dark:text-white  font-bold text-center justify-center lg:justify-start lg:mx-2
    }
 .dropParent:hover>.dropChild{
     @apply lg:flex

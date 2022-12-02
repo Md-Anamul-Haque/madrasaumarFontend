@@ -7,9 +7,13 @@ import TopOfNav from './TopOfNav';
 import TopOfNavLogoAndNameOfORG from './TopOfNavLogoAndNameOfORG';
 const Nav = () => {
   const [isActiveLeftIcons, setIsActiveLeftIcons] = useState(false)
-  const [showTopOfNav,setShowTopOfNav]=useState(true)
+  const [isFixedNavOfTop,setIsFixedNavOfTop]=useState(false)
   const [isActiveNavMenu,setIsActiveNavMenu]=useState(false)
+
   const navItemsRef = useRef(null);
+  const navbarRef = useRef(null)
+  const TopOfNavLogoAndNameOfORGRef = useRef(null)
+
   const handleNavItemWithThreeDotNenu = (e,bb) => {
     setIsActiveNavMenu(!isActiveNavMenu)
     navItemsRef.current.classList.toggle("hidden");
@@ -21,54 +25,87 @@ const Nav = () => {
     setIsActiveLeftIcons(false)
   }, 3000);
   useEffect(()=>{
-      var lastVal = 0
+      // let lastVal = 0
+      // window.onscroll = function(){
+      //     let y = window.scrollY
+      //     if(y > lastVal){
+      //       setIsFixedNavOfTop(false)
+      //       setIsActiveLeftIcons(true)
+      //       clearTimeout(handleSetTimeOutLeftIcon);
+      //     }
+      //     if(y < lastVal) {
+      //       setIsFixedNavOfTop(true)
+      //       setIsActiveLeftIcons(true)
+      //       clearTimeout(handleSetTimeOutLeftIcon);
+      //     }
+      //     lastVal = y
+      // }   
+
+      let lastVal = 0
+      const navbar = navbarRef.current;
+      // let sticky = navbar.offsetTop; 
+      let sticky = TopOfNavLogoAndNameOfORGRef.current.clientHeight;
+
       window.onscroll = function(){
-          let y = window.scrollY
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("fixed")
+          setIsFixedNavOfTop(true)
+        } else {
+          navbar.classList.remove("fixed");
+          setIsFixedNavOfTop(false)
+        }
+// ----------------------------------------
+        let y = window.scrollY
           if(y > lastVal){
-            setShowTopOfNav(false)
-            setIsActiveLeftIcons(true)
             clearTimeout(handleSetTimeOutLeftIcon);
           }
           if(y < lastVal) {
-            setShowTopOfNav(true)
-            setIsActiveLeftIcons(true)
             clearTimeout(handleSetTimeOutLeftIcon);
           }
-          lastVal = y
-      }        
-  },[])
+        lastVal = y
+      }      
+  },[window.innerWidth])
+  
 const TopPartsOfNavHear=()=>{
   return(
 
-    <div className=' grid justify-center'>
+    <div ref={TopOfNavLogoAndNameOfORGRef} className=' grid justify-center ' style={{}}>
 
     <TopOfNav 
     className='w-screen px-2 content-center md:px-10 italic
     bg-[#EEE3CB] dark:bg-[#D7C0AE] text-black dark:text-[#F2F2F2]
-     h-8 flex space-x-5 flex-wrap' />
+     h-8 items-center flex space-x-5 flex-wrap' />
 
     <TopOfNavLogoAndNameOfORG 
-    logoclass="rounded-sm h-full bg-teal-400 grid place-items-center"
-    nameclasses="flex space-x-10 font-bold"
-    className='flex p-1 justify-center space-x-4 italic h-10 place-content-center
-      bg-[#EAEAEA] dark:bg-[#dcbde6] text-black dark:text-black' />
+    //  ar={true} bn={true}
+    ar_bn_bnar='true'
+    ar_bn_bnar_classname='bg-transfarent max-h-full max-h-full h-20 sm:h-24 md:h-28 lg:h-36'
 
+    logoclass="rounded-md h-20 sm:h-24 md:h-28 lg:h-36 p-1 bg-teal-400"
+    style={{textShadow:'1px 1px 3px #000 , 0px 3px 4px #fff'}}
+    nameclasses="flex items-center space-x-10 font-bold space-y-5 p-5 text-purple-600"
+    className='flex font-serif text-xl lg:text-2xl xl:text-3xl justify-center space-x-4 h-auto items-center place-content-center
+      bg-[#EAEAEA] dark:bg-[#dcbde6] text-black dark:text-black' />
   </div>
 
   )
 }
+
+
   return (<>
-          {isActiveNavMenu && <div className='fixed top-0 left-0 w-full h-full lg:hidden bg-[#0003]'></div>}
-    <div className="h-36"></div> 
-    <nav 
-      className={` z-50 flex flex-col w-full
-       ${showTopOfNav ? 'top-0' : '-top-[74px]'} fixed duration-200 left-0  shadow-lg lg:items-center`}
+          {isActiveNavMenu && <div onClick={handleNavItemWithThreeDotNenu} className='fixed top-0 left-0 w-full h-full lg:hidden bg-[#000]'></div>}
+    <TopPartsOfNavHear />
+    <div className={isFixedNavOfTop ? 'h-14' : 'h-0' }></div>
+    {/* 
+    <nav ref={navbarRef}
+      className={` z-50 flex flex-col w-full top-0
+       ${isFixedNavOfTop ? 'translate-y-0' : '-translate-y-[88px]' } fixed duration-200 left-0  shadow-lg lg:items-center`}
+    >  */}
+    <nav ref={navbarRef}
+      className={` z-50 flex flex-col w-full top-0 duration-200 left-0  shadow-lg lg:items-center`}
     >
-
-      <TopPartsOfNavHear />
-
       {/* start nav hear  */}
-      <div className={`relative lg:static flex w-full h-14 justify-center bg-white dark:bg-gray-800`}>
+      <div className={`z-50 relative lg:static flex w-full h-14 justify-center bg-white dark:bg-gray-800`}>
 
         <button onClick={handleNavItemWithThreeDotNenu} 
           className="z-10 self-center absolute left-5 lg:hidden">
@@ -79,17 +116,17 @@ const TopPartsOfNavHear=()=>{
 
 {/* Logo and name start hear */}
         <div 
-        className={`lg:ml-5 max-h-14 bg-transparent justify-center ${showTopOfNav ? 'scale-0 w-0 lg:w-0 absolute -z-50' : 'scale-100 w-full lg:w-auto static z-0'} duration-200 grid mx-auto `}>
+        className={`lg:ml-5 max-h-14 bg-transparent justify-center ${isFixedNavOfTop ? 'scale-100 w-full lg:w-auto static z-0' : 'scale-0 w-0 lg:w-0 absolute -z-50' } duration-200 grid mx-auto `}>
           <TopOfNavLogoAndNameOfORG 
-            isNameIndex0={false}
-            logoclass="rounded-lg h-12 p-1 mt-2 bg-teal-400 mr-2 bg-transparent"
-            nameclasses="text-purple-500 bg-transparent dark:text-white font-sans pt-1 pb-3 hidden sm:inline-flex sm:text-lg md:text-xl lg:text-lg place-items-center "
-            className=' mx-auto max-h-14 flex place-items-center whitespace-nowrap space-x-4 rounded-sm
+            bn={true} en={true}
+            logoclass="rounded-lg h-12 p-1 bg-teal-400"
+            nameclasses="text-purple-500 bg-transparent dark:text-white text-center font-serif hidden sm:inline sm:text-lg md:text-xl lg:text-sm place-items-center "
+            className=' mx-auto max-h-14 font-bold justify-center flex place-items-center whitespace-nowrap space-x-4 rounded-sm
             bg-transparent lg:w-auto w-full h-full content-center' 
           />
         </div>
 {/* logo and name end hear  */}
-        {/* <NavElements {...{navItemsRef,showTopOfNav}} /> */}
+        {/* <NavElements {...{navItemsRef,isFixedNavOfTop}} /> */}
         <NavElements {...{navItemsRef}} />
       </div>
     </nav>

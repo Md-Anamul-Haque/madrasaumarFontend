@@ -1,0 +1,10 @@
+/* D:\web-for-user\madrashaUR\fontend\public\asset\fonts */
+
+@font-face{
+    font-family: "NikoshBAN";
+    src: url("./asset/fonts/NikoshBAN.ttf") format("truetype");
+  }
+
+.font-NikoshBAN{
+    font-family: NikoshBAN;
+}

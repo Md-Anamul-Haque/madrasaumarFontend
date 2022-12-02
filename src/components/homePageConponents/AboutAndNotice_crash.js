@@ -13,7 +13,7 @@ const AboutAndNotice_crash = () => {
                    border-fuchsia-500 dark:border-sky-500
                   rounded-3xl hover:rounded-2xl shadow-sky-500 hover:shadow-fuchsia-300 
                   dark:hover:shadow-sky-500 font-medium font-sans duration-300 hover:scale-[101%]
-                  hover:ring-2 ring-offset-slate-700 dark:ring-teal-400 '>
+                  hover:ring-2 ring-offset-slate-700 dark:ring-teal-400 grow '>
         
         <h1 className='text-xl text-center h-9 rounded-lg font-black dark:border-2'>
            ----------About of crash--------- 
@@ -31,7 +31,7 @@ const AboutAndNotice_crash = () => {
                    border-fuchsia-500 dark:border-sky-500
                   rounded-3xl hover:rounded-2xl shadow-sky-500 hover:shadow-fuchsia-400 
                   dark:hover:shadow-sky-500 font-medium font-serif duration-300 hover:scale-[101%]
-                  hover:ring-2 ring-green-500 dark:ring-teal-400 '>
+                  hover:ring-2 ring-green-500 dark:ring-teal-400 grow '>
         
         <h1 className='text-xl text-center h-9 rounded-lg font-black border-2'>
            ----------notice crash--------- 

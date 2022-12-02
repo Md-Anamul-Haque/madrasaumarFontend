@@ -56,7 +56,7 @@ const AddEditCarousel = () => {
   
   const handleCarouselImage = async(e)=>{
     const config = {
-      quality: 0.8,
+      quality: 1,
       width: 500,
       height:200
     };
